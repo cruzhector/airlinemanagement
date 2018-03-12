@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     String uid,uemail;
     NavigationView navigationView;
-    DocumentReference documentReference;
+    DocumentReference documentReference,documentReference4;
     CollectionReference documentReference1;
     FirebaseFirestore firebaseFirestore;
     TextView t1,t2,hdname,emhead;
@@ -154,6 +154,8 @@ if (count>1){
 
         }
     });
+
+
 
     finishAffinity();
 }

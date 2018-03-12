@@ -87,7 +87,10 @@ id=firebaseUser.getUid();
         nonScrollListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView t= (TextView)view;
+                String stname = t.getText().toString().trim();
                 Intent intent = new Intent(persondetails.this,traveller.class);
+                intent.putExtra("name",stname);
                 startActivity(intent);
             }
         });
