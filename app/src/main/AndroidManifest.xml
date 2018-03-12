@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.kolip.swift">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".signup" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".flightbook" />
+        <activity android:name=".flightlist" />
+        <activity android:name=".flireview" />
+        <activity android:name=".profile" />
+        <activity android:name=".profileupdate" />
+        <activity android:name=".persondetails" />
+        <activity android:name=".paymentoption" />
+        <activity android:name=".updatepass" />
+        <activity android:name=".prototype" />
+        <activity android:name=".cancellation" />
+        <activity android:name=".splash" />
+        <activity android:name=".traveller"></activity>
+    </application>
+
+</manifest>

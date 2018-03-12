@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.kolip.swift.flightlist">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/clr6"
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/listback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rotate" />
+
+
+                <TextView
+                    android:id="@+id/dptcity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Depart city"
+                   android:layout_toRightOf="@+id/listback"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:textAllCaps="true"
+                    android:textSize="15dp"
+                    android:textColor="#1a0101"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+                <ImageButton
+                    android:id="@+id/cc"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/dptcity"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/depart" />
+
+
+
+                <TextView
+                    android:id="@+id/dstcity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cc"
+                    android:text="Destination city"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#1a0101"
+                    android:textSize="15dp"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+
+                <TextView
+                    android:id="@+id/dptnodate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dptcity"
+                    android:layout_toRightOf="@+id/listback"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#1a0101"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"/>
+                <TextView
+                    android:id="@+id/dptnoadult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dptnodate"
+                    android:text="0"
+                    android:layout_toRightOf="@+id/listback"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#1a0101"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+                <TextView
+                    android:id="@+id/dptnochild"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dptnodate"
+                    android:text="0"
+                    android:layout_toRightOf="@+id/dptnoadult"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#1a0101"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+                <TextView
+                    android:id="@+id/deconcls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dptnodate"
+                    android:layout_toRightOf="@+id/dptnochild"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#1a0101"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<ProgressBar
+    android:id="@+id/pro"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="3dp"
+
+                app:cardCornerRadius="5dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAllCaps="true"
+                    android:text="sorting"
+                    android:textColor="#1d1b1b"
+                    android:fontFamily="sans-serif-condensed"/>
+
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp">
+    <ListView
+        android:id="@+id/flilist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </ListView>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

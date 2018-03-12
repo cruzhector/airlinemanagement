@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.kolip.swift.signup">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+<Gallery
+    android:id="@+id/gallery"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"></Gallery>
+
+    </LinearLayout>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Signup Now!"
+                android:textSize="30dp"
+                android:textColor="#1a0101"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Get Personalized Experience And Travel Offers "
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="20dp"
+                            android:padding="3dp" >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="120dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentLeft="true"
+                                    app:cardElevation="10dp"
+                                    app:cardCornerRadius="5dp"
+                                    android:layout_marginLeft="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:src="@drawable/googleimg"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="10dp"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="GOOGLE"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="10dp"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="120dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentRight="true"
+                                    app:cardElevation="10dp"
+                                    android:layout_marginRight="10dp"
+                                    app:cardCornerRadius="5dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:src="@drawable/facebooklogo"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="10dp"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="FACEBOOK"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="10dp"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                            </RelativeLayout>
+                        </GridLayout>
+
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:inputType="textEmailAddress"/>
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Password (minimum 6 characters)"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="30dp" />
+
+                        <EditText
+                            android:id="@+id/cnfmpassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Confirm Password"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="30dp" />
+
+
+                        <Button
+                            android:id="@+id/busign"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="SIgnup"
+                            android:background="@drawable/sgnup_butshp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="By Signing Up, You Agree To The Terms And Conditions And Privacy Policy"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="sans-serif-condensed"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already A Member ?"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"/>
+
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:text="login"
+                    android:background="@drawable/sgnup_butshp"
+                    android:layout_marginLeft="10dp"
+                    />
+
+
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

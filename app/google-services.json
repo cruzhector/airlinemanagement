@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1092545758306",
+    "firebase_url": "https://swift-4d760.firebaseio.com",
+    "project_id": "swift-4d760",
+    "storage_bucket": "swift-4d760.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092545758306:android:7cb8547c828f9d0c",
+        "android_client_info": {
+          "package_name": "com.example.kolip.swift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092545758306-gffuv3ki95c5kqbb0snnvmhgkn5pcdbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kolip.swift",
+            "certificate_hash": "fd9a403e13117cd1edb3ea10da39edb395acb1ea"
+          }
+        },
+        {
+          "client_id": "1092545758306-0geoqfpoar8l1s1hgfs05ppin5scu4jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCBPusEMNOp4m3e58ch3oKFAyNkv9tvI0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092545758306-0geoqfpoar8l1s1hgfs05ppin5scu4jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

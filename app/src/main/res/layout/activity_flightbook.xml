@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.kolip.swift.flightbook">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rotate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Book a Flight"
+                android:textColor="#1a0101"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progress"-->
+        <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:indeterminate="true" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/dest1"/>
+
+
+</LinearLayout>
+       
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/clr4">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+                    <RadioGroup
+                        android:id="@+id/radio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/rad1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="30dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="One way"
+                                android:textSize="20dp" />
+                            <View
+                                android:layout_width="1px"
+                                android:layout_height="100dp"
+
+                               android:layout_centerInParent="true"
+
+                                android:background="@android:color/background_dark"></View>
+
+                            <RadioButton
+                                android:id="@+id/rad2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:layout_marginRight="30dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="Round Trip"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+                    </RadioGroup>
+</RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_gravity="center"
+                        android:background="@android:color/background_dark"></View>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="20dp">
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:elevation="3dp">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/x1"
+                                android:layout_width="20dp"
+                                android:layout_marginTop="18dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/depart" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/depcity"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/x1"
+            android:layout_marginTop="10dp"
+            android:hint="Dept city"
+            android:layout_marginLeft="15dp"/>
+
+
+<android.support.v7.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/depcity"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/box">
+        <TextView
+            android:id="@+id/ctcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
+
+    <View
+        android:id="@+id/x2"
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/x1"
+        android:background="@android:color/background_dark"></View>
+
+
+                             <ImageView
+                                 android:id="@+id/x3"
+                               android:layout_width="20dp"
+                                 android:layout_marginTop="5dp"
+                                android:layout_height="wrap_content"
+                                 android:layout_alignParentLeft="true"
+                                 android:layout_marginLeft="10dp"
+                           android:layout_below="@+id/x2"
+                                 android:background="@drawable/land" />
+
+
+
+        <AutoCompleteTextView
+            android:id="@+id/arricity"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+android:layout_toRightOf="@+id/x3"
+            android:hint="Dest city"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="15dp"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/arricity"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/box">
+                <TextView
+                    android:id="@+id/ctcode1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <ImageButton
+    android:id="@+id/swap"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/swap"
+    android:layout_centerVertical="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="25dp"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_marginTop="20dp"
+                                android:background="@android:color/background_dark"></View>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="30dp"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+
+
+
+                                    <ImageButton
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="@drawable/date" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="35dp"
+                                    android:layout_marginTop="1dp"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:text="Departure"
+                                    android:textColor="#1a0101"
+                                    android:textSize="18dp" />
+
+                                    <ImageButton
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="180dp"
+
+                                        android:background="@drawable/date" />
+
+                                    <TextView
+                                        android:id="@+id/t2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="1dp"
+                                        android:fontFamily="sans-serif-condensed"
+                                        android:text="Return"
+                                        android:layout_marginLeft="208dp"
+                                        android:textColor="#1a0101"
+                                        android:textSize="18dp" />
+
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/dep"
+                                        android:layout_width="150dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:elevation="3dp"
+                                        android:layout_alignParentLeft="true">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                        <TextView
+                                            android:id="@+id/depdate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                          android:layout_centerInParent="true"
+                                            android:fontFamily="sans-serif-condensed"
+                                           android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:textSize="20dp"
+                                            android:textAlignment="center"
+                                            android:hint="Dep Date"
+                                            android:textColor="#1a0101" />
+
+
+                                        </RelativeLayout>
+                                    </android.support.v7.widget.CardView>
+
+
+
+
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/ret"
+                                        android:layout_width="150dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_alignParentRight="true"
+                                android:elevation="3dp"
+                                        >
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/redate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerInParent="true"
+                                            android:fontFamily="sans-serif-condensed"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="10dp"
+                                            android:textSize="20dp"
+                                            android:textAlignment="center"
+                                            android:hint="Ret Date"
+                                            android:textColor="#1a0101"/>
+
+
+                                        </RelativeLayout>
+
+                                    </android.support.v7.widget.CardView>
+
+
+                                </RelativeLayout>
+
+
+
+                            </LinearLayout>
+
+
+
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1px"
+                                    android:layout_marginTop="20dp"
+                                    android:background="@android:color/background_dark"></View>
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp">
+
+                                    <ImageView
+                                        android:id="@+id/ii1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="10dp"
+                                        android:background="@drawable/person" />
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_toRightOf="@+id/ii1"
+                                        android:fontFamily="sans-serif-condensed"
+                                        android:text="Passengers"
+                                        android:textColor="#1a0101"
+                                        android:textSize="18dp" />
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+
+
+                                </RelativeLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <android.support.v7.widget.CardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="7dp"
+                                        android:layout_marginRight="7dp"
+                                        android:layout_marginTop="10dp"
+                                       >
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_marginLeft="15dp"
+                                                android:layout_marginTop="5dp"
+                                                android:fontFamily="sans-serif-condensed"
+                                                android:text="Children"
+                                                android:textColor="#1a0101" />
+
+
+
+
+                                            <ImageButton
+                                                android:id="@+id/minus1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginLeft="10dp"
+                                                android:background="@drawable/ic_minus" />
+
+                                            <TextView
+                                                android:id="@+id/child1"
+                                                android:layout_width="50dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:textAlignment="center"
+                                                android:textSize="20dp"
+                                                android:textColor="#1a0101"
+                                                android:inputType="number"
+                                                android:layout_centerVertical="true"
+                                                android:layout_toRightOf="@+id/minus1" />
+
+                                            <ImageButton
+                                                android:id="@+id/plus1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                               android:layout_toLeftOf="@+id/cview"
+                                                android:layout_marginRight="10dp"
+                                                android:background="@drawable/ic_plus" />
+
+
+
+                                            <View
+                                                android:id="@+id/cview"
+                                                android:layout_width="1px"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerInParent="true"
+                                                android:background="@android:color/background_dark"></View>
+
+
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                               android:layout_toRightOf="@+id/cview"
+                                               android:layout_marginLeft="15dp"
+                                                android:layout_marginTop="5dp"
+                                                android:fontFamily="sans-serif-condensed"
+                                                android:text="Adults"
+                                                android:textColor="#1a0101" />
+
+
+                                            <ImageButton
+                                                android:id="@+id/plus2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginRight="10dp"
+                                               android:layout_alignParentRight="true"
+                                                android:background="@drawable/ic_plus" />
+
+
+                                            <TextView
+                                                android:id="@+id/adult1"
+                                                android:layout_width="50dp"
+                                                android:textAlignment="center"
+                                                android:textSize="20dp"
+                                                android:textColor="#1a0101"
+                                                android:inputType="number"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_centerVertical="true"
+                                                android:layout_height="wrap_content"
+                                                android:layout_toRightOf="@+id/minus2"
+                                              />
+
+
+                                            <ImageButton
+                                                android:id="@+id/minus2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                             android:layout_toRightOf="@+id/cview"
+                                                android:layout_marginLeft="10dp"
+                                                android:background="@drawable/ic_minus" />
+
+                                        </RelativeLayout>
+
+
+                                    </android.support.v7.widget.CardView>
+
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1px"
+                                    android:layout_marginTop="20dp"
+                                    android:background="@android:color/background_dark"></View>
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp">
+
+                                    <ImageView
+                                        android:id="@+id/ii2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="10dp"
+                                        android:background="@drawable/clas" />
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_toRightOf="@+id/ii2"
+                                        android:fontFamily="sans-serif-condensed"
+                                        android:text="Class"
+                                        android:textColor="#1a0101"
+                                        android:textSize="18dp" />
+
+
+                                </RelativeLayout>
+
+                                <Spinner
+                                    android:id="@+id/clas"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"></Spinner>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+                                <Button
+                                    android:id="@+id/go"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="60dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/clr2"
+                                    android:text="Ready Go" />
+
+</RelativeLayout>
+                            </LinearLayout>
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:orientation="vertical"
+                            android:background="#ffffff">
+
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

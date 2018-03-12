@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="@drawable/bgcolor"
+    tools:context="com.example.kolip.swift.profileupdate">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rotate" />
+
+            <TextView
+                android:layout_marginTop="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Profile"
+                android:textColor="#1a0101"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageButton
+                android:id="@+id/upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/save"
+                android:layout_marginLeft="190dp"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+
+        <ImageView
+            android:id="@+id/proacc"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/account"
+            android:layout_centerHorizontal="true"
+           android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+            android:layout_marginTop="140dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="tap here to change photo"
+            android:textAllCaps="false"
+            android:textColor="#1a0101"
+            android:background="@drawable/bgcolor"/>
+
+    </RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardElevation="10dp"
+        >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/panelcolors">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAllCaps="true"
+            android:text="personal information"
+            android:textColor="#1a0101"
+            android:textSize="18dp"/>
+
+</LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+</RelativeLayout>
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="200dp">
+
+
+
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              app:cardElevation="10dp">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+              <EditText
+                  android:id="@+id/fnameup"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="20dp"
+                  android:hint="First name"
+                  android:layout_marginTop="10dp"/>
+
+                  <EditText
+                      android:id="@+id/lnameup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="Last name"
+                      android:layout_marginTop="5dp"/>
+
+
+                  <EditText
+                      android:id="@+id/dobup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="Age"
+                      android:inputType="number"
+                      android:layout_marginTop="5dp"/>
+
+
+
+              </LinearLayout>
+
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+      <android.support.v7.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          app:cardElevation="10dp"
+          >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/panelcolors">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="20dp"
+              android:fontFamily="sans-serif-condensed"
+              android:textAllCaps="true"
+              android:text="contact information"
+              android:textColor="#1a0101"
+              android:textSize="18dp"/>
+</LinearLayout>
+
+      </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="150dp"
+              app:cardElevation="10dp">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+                  <RelativeLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+                  <EditText
+                      android:id="@+id/emailup"
+                      android:layout_width="300dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="Email"
+                      android:layout_marginTop="10dp"/>
+
+                      <ImageButton
+                          android:id="@+id/err1"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/error"
+                          android:background="#ffffff"
+                          android:layout_toRightOf="@+id/emailup"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="20dp"
+                          android:visibility="gone"/>
+                      <ImageButton
+                          android:id="@+id/ver1"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/verified"
+                          android:background="#ffffff"
+                          android:layout_toRightOf="@+id/err1"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="20dp"
+                          android:visibility="gone"/>
+
+                  </RelativeLayout>
+                  <EditText
+                      android:id="@+id/phnup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="Phone Number"
+                      android:inputType="number"
+                      android:layout_marginTop="5dp"/>
+
+
+
+
+              </LinearLayout>
+
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              app:cardElevation="10dp"
+              >
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:background="@drawable/panelcolors">
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginLeft="20dp"
+                      android:fontFamily="sans-serif-condensed"
+                      android:textAllCaps="true"
+                      android:text="kyc verification"
+                      android:textColor="#1a0101"
+                      android:textSize="18dp"/>
+              </LinearLayout>
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="150dp"
+              app:cardElevation="10dp">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+                  <RelativeLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+
+                  <EditText
+                      android:id="@+id/aadhar"
+                      android:layout_width="300dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="12 digit Aadhaar No"
+                      android:inputType="number"
+                      android:layout_marginTop="10dp"/>
+
+
+
+
+
+
+
+                      <ImageButton
+                          android:id="@+id/err2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/error"
+                          android:background="#ffffff"
+                          android:layout_toRightOf="@+id/aadhar"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="20dp"
+                          />
+                      <ImageButton
+                          android:id="@+id/ver2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/verified"
+                          android:background="#ffffff"
+                          android:layout_toRightOf="@+id/err2"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="20dp"
+                          android:visibility="gone"/>
+
+
+                  </RelativeLayout>
+
+
+
+                  <EditText
+                      android:id="@+id/adharname"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:hint="Name(as in Aadhar Card)"
+                      android:layout_marginTop="5dp"/>
+
+
+
+
+              </LinearLayout>
+
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+
+
+
+
+
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              app:cardElevation="10dp"
+              >
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:background="@drawable/panelcolors">
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+
+                      android:layout_marginTop="10dp"
+                      android:layout_marginLeft="20dp"
+                      android:fontFamily="sans-serif-condensed"
+                      android:textAllCaps="true"
+                      android:text="account options"
+                      android:textColor="#1a0101"
+                      android:textSize="18dp"/>
+              </LinearLayout>
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <android.support.v7.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              app:cardElevation="10dp">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+                  <TextView
+                      android:id="@+id/updatepass"
+                      android:layout_marginTop="10dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Update Password"
+                      android:textColor="#165cdf"
+                      android:textSize="18dp"
+                      android:fontFamily="sans-serif-condensed"
+                      android:layout_marginLeft="20dp"/>
+
+                  <TextView
+                      android:id="@+id/deluser"
+                      android:layout_marginTop="30dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Delete User"
+                      android:textColor="#fc0808"
+                      android:textSize="18dp"
+                      android:fontFamily="sans-serif-condensed"
+                      android:layout_marginLeft="20dp"/>
+
+
+              </LinearLayout>
+
+
+          </android.support.v7.widget.CardView>
+
+
+      </RelativeLayout>
+
+
+
+       </LinearLayout>
+
+</ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
