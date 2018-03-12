@@ -73,8 +73,7 @@ public class login extends AppCompatActivity {
     EditText e1,e2;
     View parentLayout;
     CardView c11;
-  //hello
-    //hi
+
 
     public  static  int procount = 0;
     GoogleApiClient googleApiClient;
@@ -125,7 +124,7 @@ public class login extends AppCompatActivity {
            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                if (firebaseAuth.getCurrentUser()!=null ){
-                   Intent inten = new Intent(login.this, MainActivity.class);
+                   Intent inten = new Intent(login.this,splash.class);
                    startActivity(inten);
                }
 

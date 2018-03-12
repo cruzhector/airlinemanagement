@@ -8,4 +8,29 @@
     android:background="@drawable/login"
     tools:context="com.example.kolip.swift.splash">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWIFT"
+     android:layout_centerInParent="true"
+        android:textColor="#ffffff"
+        android:textSize="60dp"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Personalized Experience And Travel Offers "
+        android:layout_centerInParent="true"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/sp"
+        />
+</RelativeLayout>
+
 </LinearLayout>
