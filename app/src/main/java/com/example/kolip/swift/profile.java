@@ -72,7 +72,7 @@ public class profile extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = firebaseUser.getUid();
-    uemail= firebaseUser.getEmail();
+        uemail= firebaseUser.getEmail();
         em.setText(uemail);
 
 
@@ -157,6 +157,11 @@ public class profile extends AppCompatActivity {
             phn.setError("error number");
 
         }
+        else if (!(s3.startsWith(String.valueOf(7))) || !(s3.startsWith(String.valueOf(8))) || !(s3.startsWith(String.valueOf(9)))){
+            progressDialog.dismiss();
+            phn.setError("error number");
+
+        }
 
         else {
 
@@ -168,14 +173,25 @@ public class profile extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     progressDialog.dismiss();
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(profile.this, MainActivity.class);
-                        startActivity(intent);
+                        HashMap<String, Object> hashMap=new HashMap<String ,Object>();
+                        hashMap.put("savecnt",String.valueOf(0));
+                        firebaseFirestore.collection("savedbooking").document(uid).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                Intent intent = new Intent(profile.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+
 
                     } else {
                         Toast.makeText(profile.this, "unsuccess", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
+
 
         }
 

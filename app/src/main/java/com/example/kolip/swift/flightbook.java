@@ -82,6 +82,7 @@ public class flightbook extends AppCompatActivity {
     String userid, d, d1, d3, d4, sp, t1, t2, da1, da2, emailid, rad,cit1,cit2;
     String[] cl = {"Economy", "Business"};
     View   parentLayout;
+    String fun;
     ImageButton i;
    private List<String> ctt = new ArrayList<String>();
     private List<String> ctt1 = new ArrayList<String>();
@@ -155,12 +156,7 @@ i=(ImageButton)findViewById(R.id.swap);
             @Override
             public void onClick(View view) {
                 progressDialog = ProgressDialog.show(flightbook.this,"" , "Get Set Go", true);
-                try {
-                    fliremove();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    Log.d("time", String.valueOf(e));
-                }
+
                 pushdata();
 
             }
@@ -172,8 +168,11 @@ i=(ImageButton)findViewById(R.id.swap);
             public void onClick(View view) {
 
                 depdate();
+
             }
         });
+
+
 
         i.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,19 +189,7 @@ i=(ImageButton)findViewById(R.id.swap);
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(flightbook.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        textview1.setText( selectedHour + ":" + selectedMinute);
-                    }
-                }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-
+               repdate();
 
             }
         });
@@ -219,6 +206,7 @@ i=(ImageButton)findViewById(R.id.swap);
             public void onClick(View view) {
                 radd2.setChecked(false);
                 textview1.setVisibility(View.GONE);
+                fun="";
             }
         });
 
@@ -227,6 +215,7 @@ i=(ImageButton)findViewById(R.id.swap);
             public void onClick(View view) {
                 radd1.setChecked(false);
                 textview1.setVisibility(View.VISIBLE);
+                fun="return";
             }
         });
 
@@ -343,6 +332,11 @@ i=(ImageButton)findViewById(R.id.swap);
                 Toast.makeText(this, "select class", Toast.LENGTH_SHORT).show();
 
             }
+            else if (TextUtils.equals(da1,da2)){
+                progressDialog.dismiss();
+                Snackbar.make(parentLayout,"Check Destination and Depart dates",Snackbar.LENGTH_SHORT).show();
+
+            }
 //
 //            else if (TextUtils.isEmpty(t1) || t1.equals("0")) {
 //                progressDialog.dismiss();
@@ -391,6 +385,7 @@ i=(ImageButton)findViewById(R.id.swap);
                     Intent intent = new Intent(flightbook.this, flightlist.class);
                     intent.putExtra("hashmaplist", (Serializable)hashMap2);
                     intent.putExtra("ncount",count3);
+                    intent.putExtra("fun",fun);
                     startActivity(intent);
                 } else {
                     Toast.makeText(flightbook.this, "unsuccess", Toast.LENGTH_SHORT).show();
@@ -402,7 +397,6 @@ i=(ImageButton)findViewById(R.id.swap);
 
     public void depdate() {
         DialogFragment dialogfragment = new datepickerClass();
-
         dialogfragment.show(getFragmentManager(), "DatePickerDialog");
     }
 
@@ -449,82 +443,61 @@ i=(ImageButton)findViewById(R.id.swap);
 
                 textview.setText(StringDateformat_UK);
 
-//            Date curDate = new Date();
-//            SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
-//            String DateToStr = format.format(curDate);
-//            Toast.makeText(flightbook.this, DateToStr, Toast.LENGTH_SHORT).show();
 
         }
     }
-public void fliremove() throws ParseException{
 
-documentReference = firebaseFirestore.collection("flights").document("airindia");
-documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-    @Override
-    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-        fliret fl = task.getResult().toObject(fliret.class);
-        String s31= (String) fl.getAIR319().get("time1");
-        String s32 = (String) fl.getAIR367().get("time1");
-        String s33 = (String) fl.getATR12().get("time1");
-        list1.add(s31);
-        list1.add(s32);
-        list1.add(s33);
-
-    }
-});
-    documentReference1 = firebaseFirestore.collection("flights").document("spicejet");
-    documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            fliretspice flr  = task.getResult().toObject(fliretspice.class);
-
-            String s311= (String) flr.getSPC143().get("time1");
-            String s322 = (String) flr.getSPBUS43().get("time1");
-            String s333 = (String) flr.getSPI123().get("time1");
-            list1.add(s311);
-            list1.add(s322);
-            list1.add(s333);
-        }
-    });
-    documentReference2 = firebaseFirestore.collection("flights").document("indigo");
-    documentReference2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            fliretindigo flri  = task.getResult().toObject(fliretindigo.class);
-            String s3111= (String) flri.getIGO613().get("time1");
-            String s3222 = (String) flri.getindigo1().get("time1");
-            String s3333 = (String) flri.getindigo2().get("time1");
-
-            list1.add(s3111);
-            list1.add(s3222);
-            list1.add(s3333);
-
-        }
-    });
-
-
-    for (int i=0;i<list1.size();i++){
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
-        Date currentLocalTime = cal.getTime();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        Date inTime = sdf.parse(list1.get(i));
-
-
-        if(inTime.compareTo(currentLocalTime) > 0){
-            Log.d("timeproto","Out time should be greater than In time");
-        }
-else{
-            Log.d("timeproto","no");
-        }
-
-    }
-
-
+public void repdate(){
+    DialogFragment dialogfragment1 = new datepickerClass1();
+    dialogfragment1.show(getFragmentManager(), "DatePickerDialog");
 }
 
-public class citiesret{
+    @SuppressLint("ValidFragment")
+    public class datepickerClass1 extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            final Calendar calendar = Calendar.getInstance();
+
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int month = calendar.get(Calendar.MONTH);
+            int year = calendar.get(Calendar.YEAR);
+
+            DatePickerDialog datepickerdialog = new DatePickerDialog(getActivity(),
+                    AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,year,month,day);
+            datepickerdialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+            return datepickerdialog;
+
+        }
+
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
 
-}
+
+            Calendar calander2 = Calendar.getInstance();
+
+            calander2.setTimeInMillis(0);
+
+            calander2.set(i, i1, i2, 0, 0, 0);
+
+
+
+
+            Date SelectedDate = calander2.getTime();
+
+
+            DateFormat dateformat_UK = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.UK);
+            String StringDateformat_UK = dateformat_UK.format(SelectedDate);
+
+            textview1.setText(StringDateformat_UK);
+
+
+        }
+    }
+
+
+
+
+
 }

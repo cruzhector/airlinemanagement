@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     TextView t1,t2,hdname,emhead;
     View parentLayout;
-    CardView cardView;
+    CardView cardView,svcard;
+
     public String nn,ll;
     int count=0;
 
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
      parentLayout = findViewById(android.R.id.content);
         t1= (TextView)findViewById(R.id.name);
         cardView = (CardView) findViewById(R.id.card1);
+        svcard = (CardView) findViewById(R.id.svcard);
+
         t2 = (TextView)findViewById(R.id.head);
         navigationView = (NavigationView)findViewById(R.id.navigation);
         firebaseFirestore= FirebaseFirestore.getInstance();
@@ -118,6 +121,13 @@ cardView.setOnClickListener(new View.OnClickListener() {
 
 });
 
+svcard.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this,saved.class);
+        startActivity(intent);
+    }
+});
 navigation();
 
 
@@ -207,14 +217,14 @@ public void navigation(){
                      break;
 
                  case R.id.check:
-                     if(isNetworkAvailable()) {
-                     Intent proto = new Intent(MainActivity.this,prototype.class);
-                     startActivity(proto);
-                     }
-
-                     else {
-                         Snackbar.make(parentLayout,"No Network",Snackbar.LENGTH_SHORT).show();
-                     }
+//                     if(isNetworkAvailable()) {
+//                     Intent proto = new Intent(MainActivity.this,prototype.class);
+//                     startActivity(proto);
+//                     }
+//
+//                     else {
+//                         Snackbar.make(parentLayout,"No Network",Snackbar.LENGTH_SHORT).show();
+//                     }
              break;
 
                  case R.id.book:

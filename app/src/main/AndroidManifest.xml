@@ -33,7 +33,8 @@
         <activity android:name=".prototype" />
         <activity android:name=".cancellation" />
         <activity android:name=".splash" />
-        <activity android:name=".traveller"></activity>
+        <activity android:name=".traveller" />
+        <activity android:name=".saved"></activity>
     </application>
 
 </manifest>

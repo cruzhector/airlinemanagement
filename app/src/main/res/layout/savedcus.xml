@@ -2,71 +2,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/listpage"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-    
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants">
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="5dp">
 
-<ImageView
-    android:id="@+id/flilogo"
-    android:layout_width="30dp"
-    android:layout_height="30dp"
-    android:layout_marginLeft="10dp"
-    android:src="@drawable/spice"
-    android:layout_marginTop="5dp"
-    android:focusableInTouchMode="false"
-    android:clickable="false"
-    android:focusable="false"/>
 
-            <TextView
-            android:id="@+id/flicomp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+        <ImageView
+            android:id="@+id/flilogo1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/spice"
+            android:layout_marginTop="5dp"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/flicomp1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             tools:text="Flight name"
-                android:textSize="10dp"
-                android:layout_marginLeft="10dp"
-            android:layout_below="@+id/flilogo"
+            android:textSize="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/flilogo1"
             android:textColor="#1d1b1b"
             android:fontFamily="sans-serif-condensed"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:focusable="false"/>
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:focusable="false"/>
 
 
 
         <TextView
-            android:id="@+id/fliname"
+            android:id="@+id/fliname1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_below="@+id/flilogo"
+            android:layout_below="@+id/flilogo1"
             android:textColor="#1d1b1b"
             android:focusableInTouchMode="false"
             android:clickable="false"
             android:focusable="false"
-            android:layout_toRightOf="@+id/flicomp"
+            android:layout_toRightOf="@+id/flicomp1"
             android:fontFamily="sans-serif-condensed"/>
 
 
 
         <TextView
-            android:id="@+id/dtime"
+            android:id="@+id/dtime1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAllCaps="true"
-             tools:text="depart"
+            tools:text="depart"
             android:textSize="20dp"
             android:layout_marginTop="13dp"
-            android:layout_toRightOf="@+id/flilogo"
+            android:layout_toRightOf="@+id/flilogo1"
             android:textColor="#1d1b1b"
             android:layout_marginLeft="60dp"
             android:fontFamily="sans-serif-condensed"
@@ -76,11 +86,12 @@
 
 
         <ImageView
+            android:id="@+id/flimg"
             android:layout_width="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
-             android:layout_toRightOf="@+id/dtime"
+            android:layout_toRightOf="@+id/dtime1"
             android:background="@drawable/depart"
             android:focusableInTouchMode="false"
             android:clickable="false"
@@ -89,7 +100,7 @@
 
 
         <TextView
-            android:id="@+id/atime"
+            android:id="@+id/atime1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -97,29 +108,27 @@
             tools:text="arriv"
             android:textSize="20dp"
             android:layout_marginTop="13dp"
-            android:layout_toLeftOf="@+id/cost"
-            android:layout_marginRight="60dp"
             android:textColor="#1d1b1b"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/flimg"
             android:focusableInTouchMode="false"
             android:clickable="false"
             android:focusable="false"
             android:fontFamily="sans-serif-condensed"/>
-<ImageButton
-    android:id="@+id/save"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_toLeftOf="@+id/cost"
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="20dp"
-    android:visibility="gone"
-    android:background="@drawable/rtrip"
-
-    />
 
 
-        <TextView
-            android:id="@+id/cost"
+                <ImageButton
+                    android:id="@+id/delete"
+                    android:layout_width="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/atime1"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/delete" ></ImageButton>
+
+
+                <TextView
+            android:id="@+id/cost1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -135,13 +144,17 @@
             android:clickable="false"
             android:focusable="false"/>
 
-        <View
+
+
+                <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="25dp"
-            android:layout_below="@+id/flilogo"
+            android:layout_below="@+id/flilogo1"
             android:background="@android:color/darker_gray"></View>
 
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </RelativeLayout>
 
 

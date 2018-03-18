@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,12 +16,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
+import static com.example.kolip.swift.flightlist.fun1;
+
 /**
  * Created by kolip on 21-02-2018.
  */
 
 public class flightcusadapter extends BaseAdapter {
     Context context;
+
 
    private List<flightlist.myobjec> list1;
 
@@ -66,6 +70,7 @@ public class flightcusadapter extends BaseAdapter {
 
             final TextView tv4 = (TextView) rowView.findViewById(R.id.fliname);
             ImageView img1 = (ImageView) rowView.findViewById(R.id.flilogo);
+            ImageButton imb1=(ImageButton) rowView.findViewById(R.id.save);
             flightlist.myobjec myObj = list1.get(pos);
             tv4.setText("(" + myObj.getFlgtname() + ")");
             tv1.setText(myObj.getFlgtcomp());
@@ -73,7 +78,12 @@ public class flightcusadapter extends BaseAdapter {
             tv2.setText(myObj.getFlgtmm());
             tv3.setText("Rs."+myObj.getFlgtcost());
             img1.setImageResource(myObj.getImg());
-
+           if (fun1.equals("return")){
+               imb1.setVisibility(View.VISIBLE);
+           }
+           else {
+               imb1.setVisibility(View.INVISIBLE);
+           }
             return rowView;
 
 

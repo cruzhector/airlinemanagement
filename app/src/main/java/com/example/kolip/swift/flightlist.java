@@ -59,6 +59,7 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
   public   String uid,deptdt1,deptchld1,deptadlt1,cls1,emd1,dptcity,dstcity;
     TextView t1,t2,t3,t4,t5,t6;
     int c1,c2,c3;
+   public static String fun1;
 
     ProgressDialog progressDialog;
 //    public static int[] img ={R.drawable.air,R.drawable.air,R.drawable.air,R.drawable.go,R.drawable.go,R.drawable.go,R.drawable.spice,R.drawable.spice,R.drawable.spice};
@@ -114,6 +115,7 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
 
                 Bundle extras = getIntent().getExtras();
                 c3 = extras.getInt("ncount");
+                fun1=extras.getString("fun");
 
                 collectionReference1 = firebaseFirestore.collection("flights").document("airindia");
 
@@ -261,7 +263,8 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
                                 list.add(new myobjec(s2333, s2533, s3333, s4333, String.valueOf(i311), R.drawable.go));
 
                                 lv.setAdapter(new flightcusadapter(flightlist.this, list));
-progressDialog.dismiss();
+
+                                progressDialog.dismiss();
                             }
 
                         }
@@ -295,6 +298,7 @@ progressDialog.dismiss();
                                     progressDialog.dismiss();
                                     Intent intent = new Intent(flightlist.this, flireview.class);
                                     intent.putExtra("cost", (Serializable) hashMap5);
+                                    intent.putExtra("fun",fun1);
                                     startActivity(intent);
 
 

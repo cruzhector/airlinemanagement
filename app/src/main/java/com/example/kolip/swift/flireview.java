@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,19 +36,22 @@ FirebaseFirestore firebaseFirestore;
 FirebaseUser firebaseUser;
 public String ui;
 CardView c1;
+int scnt;
     String cos;
-DocumentReference documentReference,documentReference1;
+DocumentReference documentReference,documentReference1,documentReference2,documentReference3;
 public String comp,nam,dt,tm1,tm2,fr,dptcity,dstcity;
 private int cost;
-String p1,p2,p3;
+String p1,p2,p3,savecnt;
+    String p4;
 ProgressDialog progressDialog;
 ImageButton i;
-
+String fun2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flireview);
         button = (Button)findViewById(R.id.but);
+        b1=(Button)findViewById(R.id.butsav);
         i = (ImageButton)findViewById(R.id.edit);
         c1 = (CardView)findViewById(R.id.policy);
         t1 = (TextView)findViewById(R.id.dd1);
@@ -64,9 +68,20 @@ ImageButton i;
         t12 = (TextView)findViewById(R.id.city1);
         t13 = (TextView)findViewById(R.id.city2);
         e = (EditText)findViewById(R.id.promo);
+        ImageView imageView=(ImageView)findViewById(R.id.imv1);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         ui = firebaseUser.getUid();
         firebaseFirestore=FirebaseFirestore.getInstance();
+
+        Bundle extras = getIntent().getExtras();
+        fun2=extras.getString("fun");
+        if (fun2.equals("return")){
+            imageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            imageView.setVisibility(View.GONE);
+        }
+
 
         documentReference = firebaseFirestore.collection("tempbooked").document(ui);
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -100,6 +115,8 @@ ImageButton i;
 
             }
         });
+
+
         documentReference1=firebaseFirestore.collection("promos").document("codes");
         documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -110,8 +127,25 @@ ImageButton i;
                 p1=documentSnapshot.getString("promo1");
                 p2=documentSnapshot.getString("promo2");
                 p3=documentSnapshot.getString("promo3");
+                p4=documentSnapshot.getString("promo4");
             }
         });
+        documentReference2=firebaseFirestore.collection("savedbooking").document(ui);
+        documentReference2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                DocumentSnapshot documentSnapshot=task.getResult();
+                savecnt=documentSnapshot.getString("savecnt");
+
+                try{
+                    scnt=Integer.parseInt(savecnt);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
 
         c1.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +182,12 @@ ImageButton i;
                     e.setEnabled(false);
                     i.setVisibility(View.VISIBLE);
                 }
+                else if(cos.equals(p4)){
+                    cost=cost-100;
+                    t8.setText(String.valueOf(cost));
+                    e.setEnabled(false);
+                    i.setVisibility(View.VISIBLE);
+                }
                 else {
                     Toast.makeText(flireview.this, "no such promo exists", Toast.LENGTH_SHORT).show();
                     }
@@ -166,7 +206,7 @@ ImageButton i;
             @Override
             public void onClick(View view) {
                 progressDialog = ProgressDialog.show(flireview.this, "", "please wait", true);
-String s= t8.getText().toString().trim();
+                String s= t8.getText().toString().trim();
                 Intent intent1 = getIntent();
                 final Map<String, Object> hashMap5 = (HashMap<String, Object>) intent1.getSerializableExtra("cost");
                 hashMap5.put("cost", s);
@@ -186,6 +226,17 @@ String s= t8.getText().toString().trim();
             }
         });
     isapplied();
+
+    b1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            scnt++;
+            documentReference3=firebaseFirestore.collection("savedbooking").document(ui);
+            documentReference3.update("savecnt",String.valueOf(scnt));
+
+        save();
+        }
+    });
     }
 
    private Boolean isapplied(){
@@ -195,6 +246,31 @@ String s= t8.getText().toString().trim();
             return true;
 }
                 return false;
+   }
+
+
+   public void save(){
+
+       HashMap<String,Object> hashMap=new HashMap<String, Object>();
+       hashMap.put("comname",comp);
+       hashMap.put("flightname",nam);
+       hashMap.put("deptdate",dt);
+       hashMap.put("deptime",tm1);
+       hashMap.put("arrtime",tm2);
+       hashMap.put("cost",fr);
+       hashMap.put("deptcity",dptcity);
+       hashMap.put("arrcity",dstcity);
+
+       firebaseFirestore.collection("savedbooking").document(ui).collection("saved").document(String.valueOf(scnt)).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+           @Override
+           public void onComplete(@NonNull Task<Void> task) {
+          if (task.isSuccessful());
+               Toast.makeText(flireview.this, "Booking Saved", Toast.LENGTH_SHORT).show();
+               Toast.makeText(flireview.this, "Applied promo may not be applied", Toast.LENGTH_SHORT).show();
+               b1.setVisibility(View.GONE);
+
+           }
+       });
    }
 
 }
