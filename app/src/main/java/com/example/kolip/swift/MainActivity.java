@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     TextView t1,t2,hdname,emhead;
     View parentLayout;
-    CardView cardView,svcard;
+    CardView cardView,svcard,cardView1;
 
     public String nn,ll;
     int count=0;
@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
      parentLayout = findViewById(android.R.id.content);
         t1= (TextView)findViewById(R.id.name);
         cardView = (CardView) findViewById(R.id.card1);
+        cardView1 = (CardView) findViewById(R.id.trips);
+
         svcard = (CardView) findViewById(R.id.svcard);
 
         t2 = (TextView)findViewById(R.id.head);
@@ -87,15 +89,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                if (task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot= task.getResult();
-                    nn=documentSnapshot.getString("fname");
-                    ll= documentSnapshot.getString("lname");
-                    t1.setText("Hello" + " " + nn +" "+ ll);
-                    hdname = (TextView)findViewById(R.id.headname);
-                    emhead = (TextView)findViewById(R.id.emailhead);
-                    hdname.setText( nn +" "+ ll);
-                    emhead.setText("(" + uemail + ")");
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        nn = documentSnapshot.getString("fname");
+                        ll = documentSnapshot.getString("lname");
+                        t1.setText("Hello" + " " + nn + " " + ll);
+                        hdname = (TextView) findViewById(R.id.headname);
+                        emhead = (TextView) findViewById(R.id.emailhead);
+                        hdname.setText(nn + " " + ll);
+                        emhead.setText("(" + uemail + ")");
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "please create profile", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -131,7 +138,16 @@ svcard.setOnClickListener(new View.OnClickListener() {
 navigation();
 
 
+cardView1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this,tripbooked.class);
+        startActivity(intent);
     }
+});
+
+    }
+
 
 
 
@@ -217,14 +233,14 @@ public void navigation(){
                      break;
 
                  case R.id.check:
-//                     if(isNetworkAvailable()) {
-//                     Intent proto = new Intent(MainActivity.this,prototype.class);
-//                     startActivity(proto);
-//                     }
-//
-//                     else {
-//                         Snackbar.make(parentLayout,"No Network",Snackbar.LENGTH_SHORT).show();
-//                     }
+                     if(isNetworkAvailable()) {
+                     Intent proto = new Intent(MainActivity.this,qrcode.class);
+                     startActivity(proto);
+                     }
+
+                     else {
+                         Snackbar.make(parentLayout,"No Network",Snackbar.LENGTH_SHORT).show();
+                     }
              break;
 
                  case R.id.book:

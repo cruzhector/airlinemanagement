@@ -157,11 +157,11 @@ public class profile extends AppCompatActivity {
             phn.setError("error number");
 
         }
-        else if (!(s3.startsWith(String.valueOf(7))) || !(s3.startsWith(String.valueOf(8))) || !(s3.startsWith(String.valueOf(9)))){
+        else if(s3.charAt(0)!='7' && s3.charAt(0)!='8' && s3.charAt(0)!='9'){
             progressDialog.dismiss();
-            phn.setError("error number");
-
+            Toast.makeText(this, "number should start with 7,8,9", Toast.LENGTH_SHORT).show();
         }
+
 
         else {
 
@@ -173,6 +173,7 @@ public class profile extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     progressDialog.dismiss();
                     if (task.isSuccessful()) {
+                        Toast.makeText(profile.this, "successfully created", Toast.LENGTH_SHORT).show();
                         HashMap<String, Object> hashMap=new HashMap<String ,Object>();
                         hashMap.put("savecnt",String.valueOf(0));
                         firebaseFirestore.collection("savedbooking").document(uid).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -256,11 +257,11 @@ public class profile extends AppCompatActivity {
             return spin;
         }
 
-       public String getkyc(){
+        public String getkyc(){
            return s6;
        }
 
-       public String getaadharname(){
+        public String getaadharname(){
            return s7;
        }
 

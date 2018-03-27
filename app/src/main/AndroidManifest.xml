@@ -34,7 +34,9 @@
         <activity android:name=".cancellation" />
         <activity android:name=".splash" />
         <activity android:name=".traveller" />
-        <activity android:name=".saved"></activity>
+        <activity android:name=".saved" />
+        <activity android:name=".tripbooked" />
+        <activity android:name=".qrcode"></activity>
     </application>
 
 </manifest>

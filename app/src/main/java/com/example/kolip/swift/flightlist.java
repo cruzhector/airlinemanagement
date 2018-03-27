@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ import org.w3c.dom.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,8 +63,11 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
     TextView t1,t2,t3,t4,t5,t6;
     int c1,c2,c3;
    public static String fun1;
-
+private List<Integer> li=new ArrayList<Integer>();
     ProgressDialog progressDialog;
+    Spinner sp;
+    public String[] sort={"High to low","Low to High"};
+    String htl,lth;
 //    public static int[] img ={R.drawable.air,R.drawable.air,R.drawable.air,R.drawable.go,R.drawable.go,R.drawable.go,R.drawable.spice,R.drawable.spice,R.drawable.spice};
     private DocumentReference document;
 
@@ -80,11 +86,14 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
         t5=(TextView)findViewById(R.id.dptcity);
         t6=(TextView)findViewById(R.id.dstcity);
         lv = (ListView) findViewById(R.id.flilist);
+//        sp=(Spinner)findViewById(R.id.sortcost);
         progressBar=  (ProgressBar)findViewById(R.id.pro);
         context = this;
 
 
-
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,sort);
+//        sp.setAdapter(arrayAdapter);
+//        htl=sp.getSelectedItem().toString();
 
 
         documentReference = firebaseFirestore.collection("tempbooked").document(uid);
@@ -155,6 +164,9 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
                                 list.add(new myobjec(s22, s24, s32, s42, String.valueOf(i2), R.drawable.air));
                                 list.add(new myobjec(s23, s25, s33, s43, String.valueOf(i3), R.drawable.air));
 
+                                li.add(i1);
+                                li.add(i2);
+                                li.add(i3);
 
                             } else {
 
@@ -211,6 +223,9 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
                                 list.add(new myobjec(s222, s242, s322, s422, String.valueOf(i21), R.drawable.spice));
                                 list.add(new myobjec(s233, s253, s333, s433, String.valueOf(i31), R.drawable.spice));
 
+                                li.add(i11);
+                                li.add(i21);
+                                li.add(i31);
 
                             }
 
@@ -262,6 +277,11 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
                                 list.add(new myobjec(s2222, s2422, s3222, s4222, String.valueOf(i211), R.drawable.go));
                                 list.add(new myobjec(s2333, s2533, s3333, s4333, String.valueOf(i311), R.drawable.go));
 
+                                li.add(i111);
+                                li.add(i211);
+                                li.add(i311);
+
+
                                 lv.setAdapter(new flightcusadapter(flightlist.this, list));
 
                                 progressDialog.dismiss();
@@ -272,6 +292,14 @@ public String lisdate,lisflcomp,lisflname,listm1,listm2;
 
                     }
                 });
+
+//
+//             if (htl.equals("High to low")){
+//
+//                 Collections.sort(li);
+//
+//             }
+
 
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

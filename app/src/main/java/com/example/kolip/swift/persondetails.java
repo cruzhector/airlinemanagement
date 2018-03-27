@@ -66,6 +66,7 @@ id=firebaseUser.getUid();
                 DocumentSnapshot documentSnapshot = task.getResult();
                 String s=documentSnapshot.getString("cost");
                 totcnt= documentSnapshot.getString("totalno");
+
                 t1.setText(s);
                 Log.d("count", totcnt);
 

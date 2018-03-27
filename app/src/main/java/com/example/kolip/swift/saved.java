@@ -3,7 +3,10 @@ package com.example.kolip.swift;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,7 +26,7 @@ ListView ls;
     FirebaseUser firebaseUser;
     Context context;
     FirebaseFirestore firebaseFirestore;
-    String uid;
+    String uid,clidepcity,cliarrcity;
     CollectionReference collectionReference1;
     private List<saveobjec> list=new ArrayList<saveobjec>();
     @Override
@@ -41,7 +44,7 @@ ls=(ListView)findViewById(R.id.savedlist);
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
                 for (DocumentChange doc : documentSnapshots.getDocumentChanges()){
-                    String s = doc.getDocument().getString("arrcity");
+                    String s  = doc.getDocument().getString("arrcity");
                     String s1 = doc.getDocument().getString("arrtime");
                     String s2 = doc.getDocument().getString("comname");
                     String s3 = doc.getDocument().getString("cost");
@@ -57,6 +60,16 @@ ls=(ListView)findViewById(R.id.savedlist);
         });
         ls.setAdapter(new savedcusadapter(this,list));
 
+        ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                saveobjec so=(saveobjec)adapterView.getItemAtPosition(i);
+                clidepcity=so.getS4();
+                cliarrcity=so.getS();
+                Toast.makeText(context, clidepcity +" "+ "to" +" "+ cliarrcity, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 public class saveobjec{
@@ -81,7 +94,7 @@ public class saveobjec{
         this.s7 = s7;
     }
 
-    public String getS() {
+    public String getS()  {
         return s;
     }
 

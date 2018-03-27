@@ -50,6 +50,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -69,7 +70,7 @@ public class flightbook extends AppCompatActivity {
     RadioGroup radioGroup;
     ImageButton i1, i2, i3, i4;
     Spinner clas;
-    TextView textview,textview1;
+    TextView textview,textview1,tv1,tv2;
     int count = 0, count1 = 0,dedat,redat;
     FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
@@ -84,16 +85,16 @@ public class flightbook extends AppCompatActivity {
     View   parentLayout;
     String fun;
     ImageButton i;
+    String shrt1,shrt2;
    private List<String> ctt = new ArrayList<String>();
     private List<String> ctt1 = new ArrayList<String>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbook);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-     parentLayout = findViewById(android.R.id.content);
+        parentLayout = findViewById(android.R.id.content);
         b1 = (Button) findViewById(R.id.go);
         i1 = (ImageButton) findViewById(R.id.minus1);
         i2 = (ImageButton) findViewById(R.id.plus1);
@@ -109,11 +110,13 @@ public class flightbook extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.radio);
         myCalendar = Calendar.getInstance();
         mycalendar1 = Calendar.getInstance();
-at1=(AutoCompleteTextView)findViewById(R.id.depcity);
-at2=(AutoCompleteTextView)findViewById(R.id.arricity);
+        at1=(AutoCompleteTextView)findViewById(R.id.depcity);
+        at2=(AutoCompleteTextView)findViewById(R.id.arricity);
         textview = (TextView) findViewById(R.id.depdate);
         textview1 = (TextView) findViewById(R.id.redate);
-i=(ImageButton)findViewById(R.id.swap);
+        tv1 = (TextView) findViewById(R.id.ctcode);
+        tv2 = (TextView) findViewById(R.id.ctcode1);
+        i=(ImageButton)findViewById(R.id.swap);
         e1.setText(String.valueOf(count));
         e2.setText(String.valueOf(count1));
         childpassenger();
@@ -142,12 +145,15 @@ i=(ImageButton)findViewById(R.id.swap);
           }
       });
 
-
         ArrayAdapter ct = new ArrayAdapter(this, android.R.layout.select_dialog_item,ctt);
         at1.setAdapter(ct);
         at1.setThreshold(1);
         at2.setAdapter(ct);
         at2.setThreshold(1);
+
+
+
+
 
 
 
@@ -305,10 +311,20 @@ i=(ImageButton)findViewById(R.id.swap);
                 Snackbar.make(parentLayout,"please select no of passegers",Snackbar.LENGTH_SHORT).show();
             }
 
-            else if (TextUtils.isEmpty(cit1)&& TextUtils.isEmpty(cit2)){
+            else if (TextUtils.isEmpty(cit1)|| TextUtils.isEmpty(cit2)){
                 progressDialog.dismiss();
                 Snackbar.make(parentLayout,"please select city",Snackbar.LENGTH_SHORT).show();
             }
+            else if (!(ctt.contains(cit1.trim()))){
+                progressDialog.dismiss();
+                Snackbar.make(parentLayout,"city does not exist",Snackbar.LENGTH_SHORT).show();
+            }
+
+            else if (!(ctt.contains(cit2.trim()))){
+                progressDialog.dismiss();
+                Snackbar.make(parentLayout,"city does not exist",Snackbar.LENGTH_SHORT).show();
+            }
+
             else if (TextUtils.equals(cit1,cit2)){
                 progressDialog.dismiss();
                 Snackbar.make(parentLayout,"Check Destination and Depart city",Snackbar.LENGTH_LONG).show();
@@ -346,6 +362,17 @@ i=(ImageButton)findViewById(R.id.swap);
                 progressDialog.dismiss();
                 Snackbar.make(parentLayout,"please select city",Snackbar.LENGTH_SHORT).show();
             }
+            else if (!(ctt.contains(cit1.trim()))){
+                progressDialog.dismiss();
+                Snackbar.make(parentLayout,"city does not exist",Snackbar.LENGTH_SHORT).show();
+            }
+
+            else if (!(ctt.contains(cit2.trim()))){
+                progressDialog.dismiss();
+                Snackbar.make(parentLayout,"city does not exist",Snackbar.LENGTH_SHORT).show();
+            }
+
+
             else if (TextUtils.equals(cit1,cit2)){
                 progressDialog.dismiss();
                 Snackbar.make(parentLayout,"Check Destination and Depart city",Snackbar.LENGTH_LONG).show();

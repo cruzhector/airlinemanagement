@@ -34,6 +34,16 @@
                 android:textSize="18dp"
                 android:fontFamily="sans-serif-condensed"
                 android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:id="@+id/heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/heart"
+                android:layout_gravity="end"
+                android:visibility="gone"
+                android:layout_marginLeft="180dp"
+                />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -181,7 +191,7 @@
                         android:id="@+id/duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="45 min"
+                        android:text=""
                         android:layout_toRightOf="@+id/stop"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="43dp"

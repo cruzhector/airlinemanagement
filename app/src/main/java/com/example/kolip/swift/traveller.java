@@ -43,8 +43,8 @@ public class traveller extends AppCompatActivity {
     e1=(EditText)findViewById(R.id.tfname);
     e2=(EditText)findViewById(R.id.tlname);
         extras = getIntent().getExtras();
-b=(Button)findViewById(R.id.tstore);
-    b.setOnClickListener(new View.OnClickListener() {
+        b=(Button)findViewById(R.id.tstore);
+        b.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             tname=e1.getText().toString().trim();

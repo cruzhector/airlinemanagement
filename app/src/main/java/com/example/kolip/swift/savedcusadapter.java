@@ -2,6 +2,7 @@ package com.example.kolip.swift;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
@@ -31,7 +35,7 @@ public class savedcusadapter extends BaseAdapter {
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
 
-    DocumentReference documentReference;
+   private DocumentReference documentReference;
 
 
     public savedcusadapter(Context context, List<saved.saveobjec> list) {
@@ -81,24 +85,41 @@ imb1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Integer ind=(Integer)view.getTag();
-       list.remove(ind.intValue());
-       notifyDataSetChanged();
-       int inc=ind+1;
-       String del=String.valueOf(inc);
+      final String delete =  list.get(ind).getS7();
+
+
        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
        firebaseFirestore=FirebaseFirestore.getInstance();
-       String ui=firebaseUser.getUid();
-       documentReference=firebaseFirestore.collection("savedbooking").document(ui).collection("saved").document(del);
-       documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-           @Override
-           public void onComplete(@NonNull Task<Void> task) {
-          if (task.isSuccessful()){
-              Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-          }
+       final String ui=firebaseUser.getUid();
+     firebaseFirestore.collection("savedbooking").document(ui).collection("saved").whereEqualTo("flightname",delete).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+             @Override
+             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                 if (task.isSuccessful()){
+                     for(DocumentSnapshot documentSnapshot : task.getResult()) {
+                         Log.d("tag",documentSnapshot.getId());
+                         Log.d("tag", String.valueOf(documentSnapshot.getData()));
+                         String cnt=documentSnapshot.getId();
+                         documentReference=firebaseFirestore.collection("savedbooking").document(ui).collection("saved").document(cnt);
+                         documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                             @Override
+                             public void onComplete(@NonNull Task<Void> task) {
 
-           }
-       });
+                                 if (task.isSuccessful()){
+                                     Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                                     list.remove(delete);
+                                     notifyDataSetChanged();
+                                 }
 
+                             }
+                         });
+
+                     }
+                 }
+
+             }
+
+     }
+    );
     }
 });
 

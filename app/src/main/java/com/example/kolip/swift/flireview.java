@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +22,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class flireview extends AppCompatActivity {
@@ -44,7 +51,15 @@ private int cost;
 String p1,p2,p3,savecnt;
     String p4;
 ProgressDialog progressDialog;
+ List<String> l1=new ArrayList<String>();
+    List<String> l2=new ArrayList<String>();
+    List<String> l3=new ArrayList<String>();
+    List<String> l4=new ArrayList<String>();
+ImageView imview;
 ImageButton i;
+String maindat;
+    String dat,arcity,dpcity;
+    String flname;
 String fun2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +82,9 @@ String fun2;
         t11 = (TextView)findViewById(R.id.dstcity1);
         t12 = (TextView)findViewById(R.id.city1);
         t13 = (TextView)findViewById(R.id.city2);
+        imview=(ImageView)findViewById(R.id.heart);
         e = (EditText)findViewById(R.id.promo);
-        ImageView imageView=(ImageView)findViewById(R.id.imv1);
+        final ImageView imageView=(ImageView)findViewById(R.id.imv1);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         ui = firebaseUser.getUid();
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -98,6 +114,8 @@ String fun2;
                     dptcity=documentSnapshot.getString("deptcity");
                     dstcity=documentSnapshot.getString("arrcity");
                     t1.setText(dt);
+
+                    Log.d("tag11",dt);
                     t2.setText(comp);
                     t3.setText("(" + nam + ")");
                     t4.setText(dt);
@@ -109,6 +127,39 @@ String fun2;
                     t11.setText(dstcity);
                     t12.setText(dptcity);
                     t13.setText(dstcity);
+maindat=t1.getText().toString();
+Log.d("tag12",maindat);
+                    firebaseFirestore.collection("savedbooking").document(ui).collection("saved").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+
+                            for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()){
+                                 dat=documentChange.getDocument().getString("deptdate");
+                                flname = documentChange.getDocument().getString("flightname");
+                                arcity=documentChange.getDocument().getString("arrcity");
+                                dpcity = documentChange.getDocument().getString("deptcity");
+
+                                l1.add(dat);
+                                l2.add(flname);
+                                l3.add(arcity);
+                                l4.add(dpcity);
+
+
+
+                            }
+                     if(l1.contains(dt) && l2.contains(nam)&& l3.contains(dstcity) && l4.contains(dptcity)){
+                            b1.setVisibility(View.GONE);
+                            imview.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                           b1.setVisibility(View.VISIBLE);
+                         imview.setVisibility(View.GONE);
+                        }
+                        }
+                    });
+
+
+
 
                 }
 
@@ -116,6 +167,14 @@ String fun2;
             }
         });
 
+
+        imview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=  new Intent(flireview.this,saved.class);
+                startActivity(intent);
+            }
+        });
 
         documentReference1=firebaseFirestore.collection("promos").document("codes");
         documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -147,6 +206,16 @@ String fun2;
         });
 
 
+
+        try{
+            Log.d("tag",dt);
+            Log.d("tag",nam);
+        }catch (Exception e){
+            Log.d("tag", String.valueOf(e));
+        }
+
+        String fdd=t1.getText().toString();
+        Log.d("tag",fdd);
 
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,6 +308,7 @@ String fun2;
     });
     }
 
+   @NonNull
    private Boolean isapplied(){
 
         if (!(TextUtils.isEmpty(cos))){

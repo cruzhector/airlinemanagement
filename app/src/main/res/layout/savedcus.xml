@@ -28,7 +28,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/spice"
+            android:src="@drawable/rotate1"
             android:layout_marginTop="5dp"
             android:focusableInTouchMode="false"
             android:clickable="false"

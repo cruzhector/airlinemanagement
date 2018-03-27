@@ -135,37 +135,52 @@
     android:layout_height="wrap_content"
     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
     android:visibility="gone"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="10dp">-->
 
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
 
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="3dp"
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginTop="3dp"-->
 
-                app:cardCornerRadius="5dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAllCaps="true"
-                    android:text="sorting"
-                    android:textColor="#1d1b1b"
-                    android:fontFamily="sans-serif-condensed"/>
+                <!--app:cardCornerRadius="5dp">-->
 
 
+               <!--<RelativeLayout-->
+                   <!--android:layout_width="match_parent"-->
+                   <!--android:layout_height="match_parent">-->
 
-            </android.support.v7.widget.CardView>
+     <!--<TextView-->
+         <!--android:layout_width="wrap_content"-->
+         <!--android:layout_height="wrap_content"-->
+         <!--android:text="Cost"-->
+         <!--android:textAllCaps="true"-->
+         <!--android:textSize="15dp"-->
+         <!--android:layout_toLeftOf="@+id/sortcost"-->
+         <!--android:textColor="#1a0101"-->
+         <!--android:layout_marginRight="15dp"-->
+         <!--android:fontFamily="sans-serif-condensed"-->
+         <!--android:layout_centerVertical="true"/>-->
 
-        </LinearLayout>
+
+<!--<Spinner-->
+    <!--android:id="@+id/sortcost"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true">-->
+
+<!--</Spinner>-->
+               <!--</RelativeLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
+
+        <!--</LinearLayout>-->
 
 <LinearLayout
     android:layout_width="match_parent"

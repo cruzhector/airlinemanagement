@@ -111,8 +111,8 @@
     android:layout_gravity="center"
     android:layout_toLeftOf="@+id/cost"
     android:layout_marginTop="15dp"
-    android:layout_marginRight="20dp"
     android:visibility="gone"
+    android:layout_marginRight="20dp"
     android:background="@drawable/rtrip"
 
     />
