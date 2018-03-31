@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -62,23 +63,27 @@ id=firebaseUser.getUid();
         documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    String s = documentSnapshot.getString("cost");
+                    totcnt = documentSnapshot.getString("totalno");
 
-                DocumentSnapshot documentSnapshot = task.getResult();
-                String s=documentSnapshot.getString("cost");
-                totcnt= documentSnapshot.getString("totalno");
-
-                t1.setText(s);
-                Log.d("count", totcnt);
-
-
-                for (int i=1;i<Integer.parseInt(totcnt)+1;i++) {
+                    t1.setText(s);
+                    Log.d("count", totcnt);
 
 
-                    list.add("passenger"+" "+String.valueOf(i));
+                    for (int i = 1; i < Integer.parseInt(totcnt) + 1; i++) {
 
+
+                        list.add("passenger" + " " + String.valueOf(i));
+
+
+                    }
 
                 }
-
+                else {
+                    Toast.makeText(persondetails.this, "cannot", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -119,7 +124,7 @@ id=firebaseUser.getUid();
             b.setOnClickListener(new View.OnClickListener() {
     @Override
                    public void onClick(View view) {
-                     Intent intent = new Intent(persondetails.this,paymentoption.class);
+                     Intent intent = new Intent(persondetails.this,seatlayout.class);
                          startActivity(intent);
                 }
              });

@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.kolip.swift.seatlayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_available"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selected"
+                android:textColor="#1a0101"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+
+                />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_armchair"
+                android:layout_gravity="center_vertical"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available"
+                android:textColor="#1a0101"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="W"
+                android:textColor="#17aaff"
+                android:fontFamily="sans-serif-condensed"
+
+
+                android:layout_gravity="center_vertical"
+
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="window"
+                android:textColor="#1a0101"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EW"
+                android:textColor="#ff7417"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_gravity="center_vertical"
+
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency window"
+                android:textSize="10dp"
+                android:textColor="#1a0101"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+
+                />
+
+        </LinearLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="8"
+            android:columnCount="6"
+            android:layout_marginTop="50dp">
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EW"
+                        android:textColor="#ff7417"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">  
+
+
+    <ToggleButton
+     android:id="@+id/tb1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/switchback"
+        android:textOn=""
+        android:textOff=""
+        android:button="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
+              <ToggleButton
+                    android:id="@+id/tb2"
+                  android:layout_width="20dp"
+                  android:layout_height="20dp"
+                  android:background="@drawable/switchback"
+                  android:textOn=""
+                  android:textOff=""
+                  android:button="@null"
+                  android:focusable="false"
+
+                  android:layout_marginTop="20dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:focusableInTouchMode="false"/>
+
+              <ToggleButton
+                  android:id="@+id/tb3"
+
+                  android:layout_width="20dp"
+                  android:layout_height="20dp"
+                  android:background="@drawable/switchback"
+                  android:textOn=""
+                  android:textOff=""
+                  android:button="@null"
+                  android:focusable="false"
+
+                  android:layout_marginTop="20dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:focusableInTouchMode="false"/>
+              <ToggleButton
+                  android:id="@+id/tb4"
+
+                  android:layout_width="20dp"
+                  android:layout_height="20dp"
+                  android:background="@drawable/switchback"
+                  android:textOn=""
+                  android:textOff=""
+                  android:button="@null"
+                  android:focusable="false"
+                  android:layout_marginTop="20dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:focusableInTouchMode="false"/>
+
+
+
+          </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="50dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ToggleButton
+                        android:id="@+id/tb5"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+                        android:id="@+id/tb6"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+                    <ToggleButton
+                        android:id="@+id/tb7"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+                        android:id="@+id/tb8"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+                    <ToggleButton
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/switchback"
+                        android:textOn=""
+                        android:textOff=""
+                        android:button="@null"
+                        android:focusable="false"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusableInTouchMode="false"/>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EW"
+                        android:textColor="#ff7417"
+                        android:fontFamily="sans-serif-condensed"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W"
+                        android:textColor="#17aaff"
+                        android:fontFamily="sans-serif-condensed"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </GridLayout>
+
+
+
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To check your seat numbers press the button"
+        android:textColor="#1a0101"
+        android:layout_toLeftOf="@+id/checkit"
+        android:fontFamily="sans-serif-condensed"
+      android:layout_marginRight="20dp"
+        />
+
+
+
+    <ImageButton
+        android:id="@+id/checkit"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background= "@drawable/fab1"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/keyarrow"
+        />
+
+
+    <TextView
+        android:id="@+id/seatcheck"
+        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#1a0101"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="sans-serif-condensed"
+
+        />
+
+
+
+
+    <Button
+        android:id="@+id/topaym"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:text="Lets Fly"
+        android:textColor="#ffffff"
+        android:background="@drawable/swipeclr"/>
+
+
+
+
+
+
+</RelativeLayout>
+
+
+</LinearLayout>

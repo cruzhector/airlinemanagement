@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.stripe.android.model.Card;
+import com.stripe.android.view.CardInputWidget;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -26,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class prototype extends AppCompatActivity {
-Button b1,b2,b3,b4,b5,b6,b7;
+Button b1,b2,b3,b4,b5,b6,b7,b8;
 String userid1,emailid1;
 FirebaseFirestore firebaseFirestore;
 FirebaseAuth firebaseAuth;
@@ -50,6 +54,40 @@ FirebaseUser firebaseUser;
         b5=(Button)findViewById(R.id.flipush4);
         b6=(Button)findViewById(R.id.flipush5);
         b7=(Button)findViewById(R.id.flipush6);
+        b8=(Button)findViewById(R.id.flipush7);
+
+        final CardInputWidget cardInputWidget=(CardInputWidget)findViewById(R.id.card_input_widget);
+//        final TextView textView=(TextView) findViewById(R.id.et_card_number);
+//        final TextView textView1=(TextView) findViewById(R.id.et_cvc_number);
+//       final TextView textView2=(TextView)findViewById(R.id.et_expiry_date);
+
+
+
+        b8.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+//       String sss= textView.getText().toString().trim();
+//       String sss1=textView1.getText().toString().trim();
+//        String sss2=textView2.getText().toString().trim();
+////        String sd1=cardInputWidget.getCard().getCVC();
+////        String sd2=cardInputWidget.getCard().getNumber();
+////        Integer sd3=cardToSave.getExpMonth();
+////        Integer sd4=cardToSave.getExpYear();
+////        Log.d("tag",sd1);
+//        Toast.makeText(prototype.this, sss, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(prototype.this, sss1, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(prototype.this, sss2, Toast.LENGTH_SHORT).show();
+//
+
+
+
+        //        Log.d("tag", String.valueOf(sd3));
+//        Log.d("tag", String.valueOf(sd4));
+
+
+    }
+});
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

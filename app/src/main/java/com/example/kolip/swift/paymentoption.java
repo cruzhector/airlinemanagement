@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.stripe.android.model.Card;
+import com.stripe.android.view.CardInputWidget;
 
 import org.json.JSONObject;
 
@@ -36,7 +39,11 @@ public class paymentoption extends AppCompatActivity {
     Button b1;
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
-String um,card1,card2,card3;
+
+    CardInputWidget cardInputWidget;
+    String um,crdnum,crdexp,crdcvv,crdmon,crdyr;
+    String datesep[];
+    String conc="20",yr;
 ListView lv;
 LinearLayout layout;
 String [] methods={"credit card","debit card"};
@@ -46,12 +53,14 @@ String [] methods={"credit card","debit card"};
         setContentView(R.layout.activity_paymentoption);
 
         t1=(TextView)findViewById(R.id.namee);
-        layout=(LinearLayout)findViewById(R.id.payments);
         t3=(TextView)findViewById(R.id.faree1);
-        lv=(ListView)findViewById(R.id.paymethod);
-        e1=(EditText)findViewById(R.id.cardno);
-        e2=(EditText)findViewById(R.id.cardname);
-        e3=(EditText)findViewById(R.id.cardcvv);
+
+
+        cardInputWidget=(CardInputWidget) findViewById(R.id.cardwid);
+        t2=(TextView)findViewById(R.id.et_card_number);
+        t4=(TextView)findViewById(R.id.et_expiry_date);
+        t5=(TextView)findViewById(R.id.et_cvc_number);
+
         b1=(Button)findViewById(R.id.goo);
 
 
@@ -86,44 +95,72 @@ String [] methods={"credit card","debit card"};
 
             }
         });
-        ArrayAdapter arrayAdapter  = new ArrayAdapter(this,android.R.layout.simple_list_item_1,methods);
-        lv.setAdapter(arrayAdapter);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                layout.setVisibility(View.VISIBLE);
-            }
-        });
 
 
 b1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
 
-        card1=e1.getText().toString().trim();
-        card2=e2.getText().toString().trim();
-        card3=e3.getText().toString().trim();
+        crdnum=t2.getText().toString().trim();
+        crdexp=t4.getText().toString().trim();
+        crdcvv=t5.getText().toString().trim();
+        datesep=crdexp.split("/");
+        crdmon=datesep[0];
+        crdyr=datesep[1];
+        yr=conc.concat(crdyr);
 
-        if (TextUtils.isEmpty(card1)||TextUtils.isEmpty(card2)||TextUtils.isEmpty(card3)){
-            Toast.makeText(paymentoption.this, "text fields are empty", Toast.LENGTH_SHORT).show();
-        }
-        else if(card1.length()!=16){
-      e1.setError("not valid enter 16 digit");
-        }
-        else if (card3.length()!=3){
-            e3.setError("not valid enter 3 digit");
-        }
-else {
-            pnr();
+        Log.d("tag",crdnum);
+        Log.d("tag",crdexp);
+        Log.d("tag",crdcvv);
+        Log.d("tag",crdmon);
+        Log.d("tag",crdyr);
+        Log.d("tag",yr);
 
 
-        }
+
+
+
+
+
+        cardvalidate();
+
+
+
+
     }
 });
 
 
     }
+
+
+
+
+  public void cardvalidate(){
+
+
+
+      Card card =new Card(crdnum,Integer.valueOf(crdmon),Integer.valueOf(yr),crdcvv);
+
+      if (!(card.validateNumber())){
+          Toast.makeText(paymentoption.this, "check your card", Toast.LENGTH_SHORT).show();
+      }
+     else if (!(card.validateExpiryDate())){
+          Toast.makeText(paymentoption.this, "check exp date", Toast.LENGTH_SHORT).show();
+      }
+     else if (!(card.validateCVC())){
+          Toast.makeText(paymentoption.this, "check your cvv", Toast.LENGTH_SHORT).show();
+      }
+
+      else {
+          pnr();
+
+      }
+
+  }
+
+
 
 public void pnr() {
     char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
@@ -135,21 +172,23 @@ public void pnr() {
     }
     String output = sb.toString();
 
+    Toast.makeText(paymentoption.this, output, Toast.LENGTH_SHORT).show();
+//    HashMap<String,Object>hashMap = new HashMap<String,Object>();
+//    hashMap.put("pnr",output);
+//      firebaseFirestore.collection("booked").document(um).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+//        @Override
+//        public void onComplete(@NonNull Task<Void> task) {
+//
+//            if (task.isSuccessful()){
+//                Toast.makeText(paymentoption.this, "payment done check my trips", Toast.LENGTH_SHORT).show();
+//            }
+//        else {
+//                Toast.makeText(paymentoption.this, "booking failed", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    });
+//
+//    }
 
-    HashMap<String,Object>hashMap = new HashMap<String,Object>();
-    hashMap.put("pnr",output);
-      firebaseFirestore.collection("booked").document(um).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-
-            if (task.isSuccessful()){
-                Toast.makeText(paymentoption.this, "payment done check my trips", Toast.LENGTH_SHORT).show();
-            }
-        else {
-                Toast.makeText(paymentoption.this, "booking failed", Toast.LENGTH_SHORT).show();
-            }
-        }
-    });
-
-    }
+}
 }

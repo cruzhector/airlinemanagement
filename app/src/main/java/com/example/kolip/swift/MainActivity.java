@@ -39,6 +39,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.stripe.android.model.Card;
+import com.stripe.android.view.CardInputWidget;
 
 import org.w3c.dom.Document;
 
@@ -73,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         cardView1 = (CardView) findViewById(R.id.trips);
 
         svcard = (CardView) findViewById(R.id.svcard);
-
         t2 = (TextView)findViewById(R.id.head);
         navigationView = (NavigationView)findViewById(R.id.navigation);
         firebaseFirestore= FirebaseFirestore.getInstance();
@@ -234,7 +235,7 @@ public void navigation(){
 
                  case R.id.check:
                      if(isNetworkAvailable()) {
-                     Intent proto = new Intent(MainActivity.this,qrcode.class);
+                     Intent proto = new Intent(MainActivity.this,prototype.class);
                      startActivity(proto);
                      }
 
