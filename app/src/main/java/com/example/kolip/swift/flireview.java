@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -46,6 +47,7 @@ CardView c1;
 int scnt;
     String cos;
 DocumentReference documentReference,documentReference1,documentReference2,documentReference3;
+CollectionReference collectionReference;
 public String comp,nam,dt,tm1,tm2,fr,dptcity,dstcity;
 private int cost;
 String p1,p2,p3,savecnt;
@@ -280,6 +282,7 @@ Log.d("tag12",maindat);
                 final Map<String, Object> hashMap5 = (HashMap<String, Object>) intent1.getSerializableExtra("cost");
                 hashMap5.put("cost", s);
 
+
                 firebaseFirestore.collection("tempbooked").document(ui).set(hashMap5).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -343,6 +346,17 @@ Log.d("tag12",maindat);
        });
    }
 
+//    @Override
+//    public void onBackPressed() {
+//        firebaseFirestore.collection("tempbooked").document(ui).collection("temp").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//
+//
+//
+//            }
+//        });
+//    }
 }
 
 

@@ -68,7 +68,7 @@
         android:background="#2dc6e1">
 
         <TextView
-
+            android:id="@+id/flnamepay"
             android:layout_marginTop="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

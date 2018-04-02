@@ -171,19 +171,37 @@ public class profile extends AppCompatActivity {
             firebaseFirestore.collection("users").document(uid).set(p1).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    progressDialog.dismiss();
+
                     if (task.isSuccessful()) {
                         Toast.makeText(profile.this, "successfully created", Toast.LENGTH_SHORT).show();
                         HashMap<String, Object> hashMap=new HashMap<String ,Object>();
                         hashMap.put("savecnt",String.valueOf(0));
+
+                        final HashMap<String, Object> hash=new HashMap<String ,Object>();
+                        hashMap.put("bookcnt",String.valueOf(0));
                         firebaseFirestore.collection("savedbooking").document(uid).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
 
-                                Intent intent = new Intent(profile.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
+                                firebaseFirestore.collection("booked").document(uid).set(hash).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if (task.isSuccessful()){
+                                            progressDialog.dismiss();
+                                            Intent intent = new Intent(profile.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+
+                                        }
+                                    }
+                                });
+
+
+                                }
+
+                                }
                         });
 
 

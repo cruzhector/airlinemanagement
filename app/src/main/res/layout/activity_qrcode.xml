@@ -7,22 +7,14 @@
     android:orientation="vertical"
     tools:context="com.example.kolip.swift.qrcode">
 
-    <EditText
-        android:id="@+id/qrstring"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        
-        />
-    
-    <Button
-        android:id="@+id/qrbut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:id="@+id/qr"
+    <TextView
+        android:layout_marginTop="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="plese donot press back button or try to redirect this page......"
+        android:textColor="#1a0101"
+
+        android:fontFamily="sans-serif-condensed"
         />
 
 </LinearLayout>

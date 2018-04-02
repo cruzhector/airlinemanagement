@@ -1,5 +1,6 @@
 package com.example.kolip.swift;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ ls=(ListView)findViewById(R.id.savedlist);
                     String s6 = doc.getDocument().getString("deptime");
                     String s7 = doc.getDocument().getString("flightname");
         list.add(new saveobjec(s,s1,s2,s3,s4,s5,s6,s7));
+
 
                 }
 

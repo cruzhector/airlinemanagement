@@ -1,10 +1,12 @@
 package com.example.kolip.swift;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -22,9 +24,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +41,16 @@ FirebaseAuth firebaseAuth;
 FirebaseUser firebaseUser;
 String email;
 String id,totcnt;
+    traveller tr=new traveller();
 Button b;
+    ProgressDialog progressDialog;
+
 List<String> list=new ArrayList<String>();
 NonScrollListView nonScrollListView;
 Number cn;
+CollectionReference collectionReference;
 FirebaseFirestore firebaseFirestore;
-DocumentReference documentReference,documentReference1;
+DocumentReference documentReference,documentReference1,documentReference2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +66,9 @@ t1=(TextView)findViewById(R.id.fa);
         email=firebaseUser.getEmail();
 id=firebaseUser.getUid();
         firebaseFirestore=FirebaseFirestore.getInstance();
+
+
+
 
         documentReference1=firebaseFirestore.collection("tempbooked").document(id);
         documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -78,7 +89,12 @@ id=firebaseUser.getUid();
                         list.add("passenger" + " " + String.valueOf(i));
 
 
+
+
                     }
+
+
+
 
                 }
                 else {
@@ -124,8 +140,34 @@ id=firebaseUser.getUid();
             b.setOnClickListener(new View.OnClickListener() {
     @Override
                    public void onClick(View view) {
-                     Intent intent = new Intent(persondetails.this,seatlayout.class);
-                         startActivity(intent);
+        progressDialog = ProgressDialog.show(persondetails.this, "", "please wait", true);
+
+
+        firebaseFirestore.collection("tempbooked").document(id).collection("travellers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+if (task.isSuccessful()){
+    QuerySnapshot documentSnapshot=task.getResult();
+   Log.d("tag", String.valueOf(documentSnapshot.size()));
+if (documentSnapshot.size()!=list.size()){
+    progressDialog.dismiss();
+    Toast.makeText(getApplicationContext(), "check passengers", Toast.LENGTH_SHORT).show();
+}
+else {
+progressDialog.dismiss();
+    Intent intent = new Intent(persondetails.this, seatlayout.class);
+    startActivity(intent);
+
+}
+
+}
+
+    }
+});
+
+
+
                 }
              });
 

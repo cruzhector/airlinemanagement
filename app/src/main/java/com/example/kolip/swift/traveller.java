@@ -26,12 +26,12 @@ public class traveller extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
-    DocumentReference documentReference;
-    CollectionReference documentReference1;
+    DocumentReference documentReference,documentReference1;
+
     EditText e1,e2;
     Button b;
     Bundle extras;
-    String tem,tname,tlname,iname;
+    String tem,tname,tlname,iname,check;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +44,38 @@ public class traveller extends AppCompatActivity {
     e2=(EditText)findViewById(R.id.tlname);
         extras = getIntent().getExtras();
         b=(Button)findViewById(R.id.tstore);
+        check=extras.getString("name").trim();
+        check = check.replace(" ", "");
+
+
+        documentReference1=firebaseFirestore.collection("tempbooked").document(tem).collection("travellers").document(check);
+        documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        e1.setText(documentSnapshot.getString("fname"));
+                        e2.setText(documentSnapshot.getString("lname"));
+                    }
+                    else {
+                        e1.setText("");
+                        e2.setText("");
+                    }
+
+                }
+                else {
+                    e1.setText("");
+                    e2.setText("");
+                }
+            }
+        });
+
+
+
+
+
         b.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {

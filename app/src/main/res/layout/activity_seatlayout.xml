@@ -268,7 +268,7 @@
                     android:orientation="vertical">
 
                     <ToggleButton
-
+                        android:id="@+id/tb5"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/switchback"
@@ -282,7 +282,7 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
-
+                        android:id="@+id/tb6"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/switchback"
@@ -296,7 +296,7 @@
                         android:focusableInTouchMode="false"/>
 
                     <ToggleButton
-
+                        android:id="@+id/tb7"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/switchback"
@@ -309,7 +309,7 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
-
+                        android:id="@+id/tb8"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/switchback"
@@ -340,7 +340,7 @@
                     android:orientation="vertical">
 
                     <ToggleButton
-                        android:id="@+id/tb5"
+                        android:id="@+id/tb9"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -354,7 +354,7 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
-                        android:id="@+id/tb6"
+                        android:id="@+id/tb10"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -369,7 +369,7 @@
                         android:focusableInTouchMode="false"/>
 
                     <ToggleButton
-                        android:id="@+id/tb7"
+                        android:id="@+id/tb11"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -383,7 +383,7 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
-                        android:id="@+id/tb8"
+                        android:id="@+id/tb12"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -415,6 +415,7 @@
                     android:orientation="vertical">
 
                     <ToggleButton
+                        android:id="@+id/tb13"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -428,6 +429,7 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
+                        android:id="@+id/tb14"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -442,6 +444,7 @@
                         android:focusableInTouchMode="false"/>
 
                     <ToggleButton
+                        android:id="@+id/tb15"
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -455,6 +458,8 @@
                         android:layout_marginBottom="10dp"
                         android:focusableInTouchMode="false"/>
                     <ToggleButton
+                        android:id="@+id/tb16"
+
 
                         android:layout_width="20dp"
                         android:layout_height="20dp"

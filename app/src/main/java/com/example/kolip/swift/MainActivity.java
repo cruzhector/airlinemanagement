@@ -177,6 +177,32 @@ if (count>1){
         public void onComplete(@NonNull Task<Void> task) {
             if (task.isSuccessful()){
 //                Toast.makeText(MainActivity.this, "You will lose data", Toast.LENGTH_SHORT).show();
+                firebaseFirestore.collection("tempbooked").document(uid).collection("travellers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot documentSnapshot : task.getResult()){
+                                documentReference4=firebaseFirestore.collection("tempbooked").document(uid).collection("travellers").document(documentSnapshot.getId());
+                                documentReference4.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                   if (task.isSuccessful()){
+                                       Log.d("tag","success");
+                                   }
+                                   else {
+                                       Log.d("tag","success");
+
+                                   }
+
+
+                                    }
+                                });
+                            }
+                        }
+
+                    }
+                });
             }
 
         }
@@ -235,7 +261,7 @@ public void navigation(){
 
                  case R.id.check:
                      if(isNetworkAvailable()) {
-                     Intent proto = new Intent(MainActivity.this,prototype.class);
+                     Intent proto = new Intent(MainActivity.this,qrcode.class);
                      startActivity(proto);
                      }
 
