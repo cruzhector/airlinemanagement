@@ -86,6 +86,7 @@ public class qrcode extends AppCompatActivity {
                         bitmap=encode(s);
 
                         String x=Base64.encodeToString(getBytesFromBitmap(bitmap),Base64.NO_WRAP);
+                        byte[] bytes=getBytesFromBitmap(bitmap);
                         hashMap=new HashMap<>();
                         hashMap.put("pnrbar",x);
                         hashMap.put("pnrs",s);
@@ -95,6 +96,7 @@ public class qrcode extends AppCompatActivity {
                         hashMap.put("deptdate",date);
                         hashMap.put("totcost",cost1);
                         hashMap.put("fliname",fliname1);
+
 
 
                         store();

@@ -189,6 +189,7 @@
 
 
            <android.support.v7.widget.CardView
+               android:id="@+id/qrs"
                android:layout_width="80dp"
                android:layout_height="80dp"
                app:cardElevation="10dp"
@@ -214,9 +215,9 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center"
-                       android:text="QR Scanner"
-                       android:textColor="#1a0101"
-                       android:fontFamily="sans-serif-condensed"/>
+                       android:fontFamily="sans-serif-condensed"
+                       android:text="Fast Checkin"
+                       android:textColor="#1a0101" />
 
 
                </LinearLayout>

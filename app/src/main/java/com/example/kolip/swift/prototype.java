@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,8 +56,8 @@ FirebaseUser firebaseUser;
         b6=(Button)findViewById(R.id.flipush5);
         b7=(Button)findViewById(R.id.flipush6);
         b8=(Button)findViewById(R.id.flipush7);
+        ImageView im=(ImageView)findViewById(R.id.qr) ;
 
-        final CardInputWidget cardInputWidget=(CardInputWidget)findViewById(R.id.card_input_widget);
 //        final TextView textView=(TextView) findViewById(R.id.et_card_number);
 //        final TextView textView1=(TextView) findViewById(R.id.et_cvc_number);
 //       final TextView textView2=(TextView)findViewById(R.id.et_expiry_date);
@@ -283,6 +284,10 @@ b5.setOnClickListener(new View.OnClickListener() {
 
     }
 });
+
+
+
+
 //        DocumentReference doc = firebaseFirestore.collection("date").document("new");
 //        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 //            @Override
@@ -328,6 +333,9 @@ b5.setOnClickListener(new View.OnClickListener() {
 
     }
 });
+
+
+
 
         b6.setOnClickListener(new View.OnClickListener() {
             @Override

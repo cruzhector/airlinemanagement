@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     TextView t1,t2,hdname,emhead;
     View parentLayout;
-    CardView cardView,svcard,cardView1;
+    CardView cardView,svcard,cardView1,qrcard;
 
     public String nn,ll;
     int count=0;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         t1= (TextView)findViewById(R.id.name);
         cardView = (CardView) findViewById(R.id.card1);
         cardView1 = (CardView) findViewById(R.id.trips);
-
+        qrcard=(CardView)findViewById(R.id.qrs);
         svcard = (CardView) findViewById(R.id.svcard);
         t2 = (TextView)findViewById(R.id.head);
         navigationView = (NavigationView)findViewById(R.id.navigation);
@@ -143,6 +143,15 @@ cardView1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(MainActivity.this,tripbooked.class);
+        startActivity(intent);
+    }
+});
+
+
+qrcard.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this,qrbar.class);
         startActivity(intent);
     }
 });
@@ -261,8 +270,8 @@ public void navigation(){
 
                  case R.id.check:
                      if(isNetworkAvailable()) {
-//                     Intent proto = new Intent(MainActivity.this,prototype.class);
-//                     startActivity(proto);
+                     Intent proto = new Intent(MainActivity.this,qrbar.class);
+                     startActivity(proto);
                      }
 
                      else {

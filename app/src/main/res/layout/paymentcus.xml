@@ -4,18 +4,135 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
 
-<TextView
-    android:id="@+id/tripname"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerVertical="true"
-    android:text="hello"/>
+       >
+
+        <TextView
+            android:id="@+id/tripname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/pnrs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/tripname"
+            />
 
 
     </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+
+        android:background="@drawable/cardclr1">
+
+        <TextView
+            android:id="@+id/dptcitydialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="false"
+            android:text="Depart city"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textAllCaps="true"
+
+            android:fontFamily="sans-serif-condensed"/>
+
+
+        <ImageButton
+            android:id="@+id/ccdialog"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/dptcitydialog"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/depart"
+            android:backgroundTint="#ffffff"/>
+
+
+
+        <TextView
+            android:id="@+id/dstcitydialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ccdialog"
+            android:text="Destination city"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+
+        <TextView
+            android:id="@+id/dddialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
+            android:textColor="#ffffff"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        >
+
+        <TextView
+            android:id="@+id/flinamedialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            />
+
+
+        <TextView
+            android:id="@+id/costdialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flinamedialog"
+            android:layout_marginTop="15dp"
+            android:layout_centerInParent="true"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
 
 </LinearLayout>

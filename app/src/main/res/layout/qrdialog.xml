@@ -5,11 +5,29 @@
     android:orientation="vertical">
 
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Scan the QR for PNRs"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#1a0101" />
+
     <ImageView
         android:id="@+id/bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_centerInParent="true"
         />
+
+</RelativeLayout>
 
 </LinearLayout>

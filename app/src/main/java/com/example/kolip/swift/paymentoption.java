@@ -94,7 +94,7 @@ if (task.isSuccessful()) {
     String nm = (String) documentSnapshot.get("fname");
     String nm1 = documentSnapshot.getString("lname");
     t1.setText(nm + nm1);
-    list.add(nm.concat(nm1));
+
 
 
 firebaseFirestore.collection("tempbooked").document(um).collection("travellers").addSnapshotListener(new EventListener<QuerySnapshot>() {
