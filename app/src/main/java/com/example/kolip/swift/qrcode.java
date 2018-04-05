@@ -37,7 +37,7 @@ public class qrcode extends AppCompatActivity {
     Button b1;
     EditText e1;
     ImageView i1, i2;
-    String s;
+    String s,conc,nam,city1,city2,cost1,date,fliname1;
     Bitmap bitmap;
     Bundle bundle;
     DocumentReference documentReference, documentReference1, documentReference2;
@@ -69,10 +69,18 @@ public class qrcode extends AppCompatActivity {
 
                     Log.d("tag11", count);
 
-
+                    conc="trip".concat(count);
                     Intent intent = getIntent();
                     bundle = intent.getExtras();
                     s = bundle.getString("pnrlist");
+                    nam=bundle.getString("namelist");
+                    city1 = bundle.getString("dptcity");
+                    city2=bundle.getString("dstcity");
+                    date = bundle.getString("dptdate");
+                    cost1=bundle.getString("cost");
+                    fliname1=bundle.getString("fliname");
+
+
                     Log.d("tag", s);
                     try{
                         bitmap=encode(s);
@@ -80,7 +88,14 @@ public class qrcode extends AppCompatActivity {
                         String x=Base64.encodeToString(getBytesFromBitmap(bitmap),Base64.NO_WRAP);
                         hashMap=new HashMap<>();
                         hashMap.put("pnrbar",x);
-                        hashMap.put("pnr",s);
+                        hashMap.put("pnrs",s);
+                        hashMap.put("names",nam);
+                        hashMap.put("deptcity",city1);
+                        hashMap.put("arrcity",city2);
+                        hashMap.put("deptdate",date);
+                        hashMap.put("totcost",cost1);
+                        hashMap.put("fliname",fliname1);
+
 
                         store();
 
@@ -149,7 +164,7 @@ public class qrcode extends AppCompatActivity {
     {
 
 
-        firebaseFirestore.collection("barcode").document(um).collection("trips").document("trip".concat(count)).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseFirestore.collection("booked").document(um).collection("trips").document(conc).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 

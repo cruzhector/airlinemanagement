@@ -61,6 +61,69 @@
 </RelativeLayout>
 </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/cardclr1">
+
+        <TextView
+            android:id="@+id/dptcitypay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="false"
+            android:text="Depart city"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+        <ImageButton
+            android:id="@+id/ccpay1"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/dptcitypay1"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/depart"
+            android:backgroundTint="#ffffff"/>
+
+
+
+        <TextView
+            android:id="@+id/dstcitypay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ccpay1"
+            android:text="Destination city"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+
+        <TextView
+            android:id="@+id/ddpay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
+            android:textColor="#ffffff"
+            android:fontFamily="sans-serif-condensed"/>
+
+
+
+
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -208,5 +271,6 @@
         android:text="pay" />
 
     </RelativeLayout>
+
 
 </LinearLayout>

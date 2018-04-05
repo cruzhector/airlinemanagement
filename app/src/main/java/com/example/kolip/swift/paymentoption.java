@@ -22,9 +22,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.stripe.android.model.Card;
 import com.stripe.android.view.CardInputWidget;
 
@@ -34,21 +38,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class paymentoption extends AppCompatActivity {
 
-    TextView t1,t2,t3,t4,t5,t6;
+    TextView t1,t2,t3,t4,t5,t6,t7,t8,t9;
     EditText e1,e2,e3;
-    DocumentReference documentReference,documentReference1;
+    DocumentReference documentReference,documentReference1,documentReference2;
     FirebaseAuth firebaseAuth;
-    Button b1;
+    Button b1,b2;
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
     ProgressDialog progressDialog;
-
+    List<String> list =new ArrayList<>();
     CardInputWidget cardInputWidget;
     String um,crdnum,crdexp,crdcvv,crdmon,crdyr;
     String datesep[];
+    String cnm,flnm,paydt,paydstct,paydptct;
     String count;
     ArrayList<String> al=new ArrayList<>();
     String conc="20",yr;
@@ -63,7 +70,9 @@ LinearLayout layout;
         t3=(TextView)findViewById(R.id.faree1);
         t6=(TextView)findViewById(R.id.flnamepay);
 
-
+        t7=(TextView)findViewById(R.id.dptcitypay1);
+        t8=(TextView)findViewById(R.id.dstcitypay1);
+        t9=(TextView)findViewById(R.id.ddpay1);
         cardInputWidget=(CardInputWidget) findViewById(R.id.cardwid);
         t2=(TextView)findViewById(R.id.et_card_number);
         t4=(TextView)findViewById(R.id.et_expiry_date);
@@ -79,12 +88,34 @@ LinearLayout layout;
     documentReference=firebaseFirestore.collection("users").document(um);
     documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
     @Override
-    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+    public void onComplete(@NonNull final Task<DocumentSnapshot> task) {
+if (task.isSuccessful()) {
+    final DocumentSnapshot documentSnapshot = task.getResult();
+    String nm = (String) documentSnapshot.get("fname");
+    String nm1 = documentSnapshot.getString("lname");
+    t1.setText(nm + nm1);
+    list.add(nm.concat(nm1));
 
-        DocumentSnapshot documentSnapshot=  task.getResult();
-        String nm = (String) documentSnapshot.get("fname");
-        String nm1=documentSnapshot.getString("lname");
-        t1.setText(nm + nm1);
+
+firebaseFirestore.collection("tempbooked").document(um).collection("travellers").addSnapshotListener(new EventListener<QuerySnapshot>() {
+    @Override
+    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+
+for (DocumentChange documentChange:documentSnapshots.getDocumentChanges()){
+
+    String ss=documentChange.getDocument().getString("fname");
+
+    list.add(ss);
+
+}
+
+
+
+    }
+});
+
+
+}
 
     }
 });
@@ -94,17 +125,21 @@ LinearLayout layout;
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
                 DocumentSnapshot documentSnapshot=  task.getResult();
-                String nm = (String) documentSnapshot.get("cost");
+                 cnm = (String) documentSnapshot.get("cost");
                 count=documentSnapshot.getString("totalno");
-                String flnm=documentSnapshot.getString("flightname");
+                flnm=documentSnapshot.getString("flightname");
+                paydt=documentSnapshot.getString("deptdate");
+                paydptct=documentSnapshot.getString("deptcity");
+                paydstct=documentSnapshot.getString("arrcity");
 
 
-
-                int f = Integer.parseInt(nm);
+                int f = Integer.parseInt(cnm);
                 f=f+150;
                 t3.setText(String.valueOf(f));
                 t6.setText(flnm);
-
+                t7.setText(paydptct);
+                t8.setText(paydstct);
+                t9.setText(paydt);
             }
         });
 
@@ -185,6 +220,12 @@ else {
           progressDialog.dismiss();
           Intent intent=new Intent(paymentoption.this,qrcode.class);
           intent.putExtra("pnrlist",al.toString());
+          intent.putExtra("namelist",list.toString());
+          intent.putExtra("dptcity",paydptct);
+          intent.putExtra("dstcity",paydstct);
+          intent.putExtra("dptdate",paydt);
+          intent.putExtra("cost",t3.getText().toString());
+          intent.putExtra("fliname",flnm);
           startActivity(intent);
 
       }
@@ -231,4 +272,7 @@ Log.d("tag",al.toString());
 //    }
 
 }
+
+
+
 }

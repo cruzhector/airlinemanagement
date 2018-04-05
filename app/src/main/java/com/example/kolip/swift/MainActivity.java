@@ -261,8 +261,8 @@ public void navigation(){
 
                  case R.id.check:
                      if(isNetworkAvailable()) {
-                     Intent proto = new Intent(MainActivity.this,qrcode.class);
-                     startActivity(proto);
+//                     Intent proto = new Intent(MainActivity.this,prototype.class);
+//                     startActivity(proto);
                      }
 
                      else {

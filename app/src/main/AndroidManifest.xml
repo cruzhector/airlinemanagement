@@ -37,7 +37,8 @@
         <activity android:name=".saved" />
         <activity android:name=".tripbooked" />
         <activity android:name=".qrcode" />
-        <activity android:name=".seatlayout"></activity>
+        <activity android:name=".seatlayout" />
+        <activity android:name=".qrbar"></activity>
     </application>
 
 </manifest>
