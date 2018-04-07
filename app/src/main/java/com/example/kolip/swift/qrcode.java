@@ -1,11 +1,16 @@
 package com.example.kolip.swift;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -164,6 +169,7 @@ public class qrcode extends AppCompatActivity {
 
     public void store()
     {
+     final NotificationManager   notificationManager=(NotificationManager)qrcode.this.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
         firebaseFirestore.collection("booked").document(um).collection("trips").document(conc).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -187,6 +193,20 @@ public class qrcode extends AppCompatActivity {
                                 startActivity(intent1);
                                 Toast.makeText(qrcode.this, "payment success", Toast.LENGTH_SHORT).show();
                                 Toast.makeText(qrcode.this, "check my trips to review your booking", Toast.LENGTH_SHORT).show();
+
+
+                                Notification.Builder builder=new Notification.Builder(qrcode.this);
+                                builder.setAutoCancel(true);
+                                builder.setContentTitle("Swift notification");
+                                builder.setContentText("flight booked");
+                                builder.setSmallIcon(R.drawable.ic_airplane);
+                                Intent intent2=new Intent(qrcode.this,MainActivity.class);
+                                PendingIntent pendingIntent=PendingIntent.getActivity(qrcode.this,2,intent2,PendingIntent.FLAG_UPDATE_CURRENT);
+                                builder.setContentIntent(pendingIntent);
+                                builder.build();
+                               Notification notification=builder.getNotification();
+                              notificationManager.notify(11,notification);
+
 
                             }
                             else {

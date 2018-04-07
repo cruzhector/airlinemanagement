@@ -62,32 +62,36 @@ public class qrbar extends AppCompatActivity {
                     progressDialog.dismiss();
 
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    String cnt=documentSnapshot.getString("bookcnt");
+                    if (documentSnapshot.exists()) {
+                        String cnt = documentSnapshot.getString("bookcnt");
 
 
-                    if(Integer.parseInt(cnt)==1) {
-                        Toast.makeText(qrbar.this, "no bookings", Toast.LENGTH_SHORT).show();
+                        if (Integer.parseInt(cnt) == 1) {
+                            Toast.makeText(qrbar.this, "no bookings", Toast.LENGTH_SHORT).show();
+                        } else {
+                            for (int i = 1; i < Integer.parseInt(cnt); i++) {
+
+
+                                list.add("trip" + String.valueOf(i));
+
+                                Log.d("tag22", list.toString());
+                            }
+                            ArrayAdapter arrayAdapter = new ArrayAdapter(qrbar.this, android.R.layout.simple_list_item_1, list);
+                            lv.setAdapter(arrayAdapter);
+
+
+                        }
+
+
                     }
                     else {
-                        for (int i = 1; i < Integer.parseInt(cnt) ; i++) {
-
-
-                            list.add("trip" + String.valueOf(i));
-
-                            Log.d("tag22",list.toString());
-                        }
-                        ArrayAdapter arrayAdapter  = new ArrayAdapter(qrbar.this,android.R.layout.simple_list_item_1,list);
-                        lv.setAdapter(arrayAdapter);
-
+                        Toast.makeText(qrbar.this, "no bookings", Toast.LENGTH_SHORT).show();
 
                     }
-
-
-
 
                 }
                 else {
-
+                    Toast.makeText(qrbar.this, "no bookings", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -107,28 +111,31 @@ public class qrbar extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             progressDialog.dismiss();
 
-                            DocumentSnapshot documentSnapshot=task.getResult();
-                            String s=documentSnapshot.getString("pnrbar").trim();
-                            byte[] bytes= Base64.decode(s,0);
-
+                            DocumentSnapshot documentSnapshot = task.getResult();
+                            if (documentSnapshot.exists()) {
+                                String s = documentSnapshot.getString("pnrbar").trim();
+                                byte[] bytes = Base64.decode(s, 0);
 
 
                                 Log.d("tag33", String.valueOf(bytes));
 
 
-                            final Dialog dialog=new Dialog(qrbar.this);
-                            dialog.setContentView(R.layout.qrdialog);
-                            dialog.setCancelable(true);
-                            ImageView im=(ImageView) dialog.findViewById(R.id.bar);
-                            Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                            im.setImageBitmap(bitmap);
-                            dialog.show();
-                        }
-                        else{
+                                final Dialog dialog = new Dialog(qrbar.this);
+                                dialog.setContentView(R.layout.qrdialog);
+                                dialog.setCancelable(true);
+                                ImageView im = (ImageView) dialog.findViewById(R.id.bar);
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                im.setImageBitmap(bitmap);
+                                dialog.show();
+                            } else {
+                                Toast.makeText(qrbar.this, "no trip", Toast.LENGTH_SHORT).show();
+                            }
+
                             Toast.makeText(qrbar.this, "no trip", Toast.LENGTH_SHORT).show();
+
                         }
 
                     }

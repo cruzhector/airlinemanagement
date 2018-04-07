@@ -93,6 +93,8 @@ public class flightbook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbook);
 
+
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         parentLayout = findViewById(android.R.id.content);
         b1 = (Button) findViewById(R.id.go);

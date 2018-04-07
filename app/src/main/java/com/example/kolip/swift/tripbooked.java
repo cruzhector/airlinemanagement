@@ -50,34 +50,38 @@ TextView t1;
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
+
                     progressDialog.dismiss();
+
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    String cnt=documentSnapshot.getString("bookcnt");
+                    if (documentSnapshot.exists()) {
+                        String cnt = documentSnapshot.getString("bookcnt");
 
 
-                    if(Integer.parseInt(cnt)==1) {
-                        Toast.makeText(tripbooked.this, "no bookings", Toast.LENGTH_SHORT).show();
+                        if (Integer.parseInt(cnt) == 1) {
+                            Toast.makeText(tripbooked.this, "no bookings", Toast.LENGTH_SHORT).show();
+                        } else {
+                            for (int i = 1; i < Integer.parseInt(cnt); i++) {
+
+
+                                list.add("trip" + String.valueOf(i));
+
+                                Log.d("tag22", list.toString());
+                            }
+                            ArrayAdapter arrayAdapter = new ArrayAdapter(tripbooked.this, android.R.layout.simple_list_item_1, list);
+                            lv.setAdapter(arrayAdapter);
+
+
+                        }
+
+
                     }
                     else {
-                    for (int i = 1; i < Integer.parseInt(cnt) ; i++) {
-
-
-                        list.add("trip" + String.valueOf(i));
-
-                        Log.d("tag22",list.toString());
+                        Toast.makeText(tripbooked.this, "no bookings", Toast.LENGTH_SHORT).show();
                     }
-                        ArrayAdapter arrayAdapter  = new ArrayAdapter(tripbooked.this,android.R.layout.simple_list_item_1,list);
-                        lv.setAdapter(arrayAdapter);
-
-
-                    }
-
-
-
-
                 }
                 else {
-
+                    Toast.makeText(tripbooked.this, "no bookings", Toast.LENGTH_SHORT).show();
                 }
             }
         });
