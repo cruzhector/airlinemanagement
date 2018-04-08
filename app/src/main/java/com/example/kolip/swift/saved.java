@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +28,7 @@ ListView ls;
     FirebaseUser firebaseUser;
     Context context;
     FirebaseFirestore firebaseFirestore;
-    String uid,clidepcity,cliarrcity;
+    String uid,clidepcity,cliarrcity,savdate;
     CollectionReference collectionReference1;
     private List<saveobjec> list=new ArrayList<saveobjec>();
     @Override
@@ -68,8 +69,18 @@ ls=(ListView)findViewById(R.id.savedlist);
                 saveobjec so=(saveobjec)adapterView.getItemAtPosition(i);
                 clidepcity=so.getS4();
                 cliarrcity=so.getS();
-                Toast.makeText(context, clidepcity +" "+ "to" +" "+ cliarrcity, Toast.LENGTH_SHORT).show();
+                savdate=so.getS5();
 
+                Dialog dialog =new Dialog(saved.this);
+                dialog.setContentView(R.layout.saveddialog);
+                dialog.setCancelable(true);
+                TextView tv1=(TextView)dialog.findViewById(R.id.dptcitysavdialog);
+                TextView tv2=(TextView)dialog.findViewById(R.id.dstcitysavdialog);
+                TextView tv3=(TextView)dialog.findViewById(R.id.ddsavdialog);
+                tv1.setText(clidepcity);
+                tv2.setText(cliarrcity);
+                tv3.setText(savdate);
+                dialog.show();
             }
         });
 

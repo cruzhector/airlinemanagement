@@ -134,8 +134,11 @@ public class qrbar extends AppCompatActivity {
                                 Toast.makeText(qrbar.this, "no trip", Toast.LENGTH_SHORT).show();
                             }
 
-                            Toast.makeText(qrbar.this, "no trip", Toast.LENGTH_SHORT).show();
 
+
+                        }
+                        else {
+                            Toast.makeText(qrbar.this, "no trip", Toast.LENGTH_SHORT).show();
                         }
 
                     }

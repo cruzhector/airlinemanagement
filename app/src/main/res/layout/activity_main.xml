@@ -98,10 +98,10 @@
 
         <ImageView
 
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:src="@drawable/flight"
-            android:background="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_air"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -109,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Flights"
+            android:layout_marginTop="10dp"
             android:textColor="#1a0101"
             android:fontFamily="sans-serif-condensed"/>
 
@@ -132,10 +133,10 @@
                    android:orientation="vertical">
 
                    <ImageView
-                       android:layout_width="30dp"
-                       android:layout_height="50dp"
-                       android:src="@drawable/clas"
-                       android:background="@android:color/white"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_saved"
+                       android:layout_marginTop="20dp"
                        android:layout_gravity="center"/>
 
                    <TextView
@@ -145,7 +146,7 @@
                        android:textSize="11dp"
                        android:text="Saved Bookings"
                        android:textColor="#1a0101"
-                       android:layout_marginTop="3dp"
+                       android:layout_marginTop="10dp"
                        android:fontFamily="sans-serif-condensed"/>
 
 
@@ -167,10 +168,10 @@
                    android:orientation="vertical">
 
                    <ImageView
-                       android:layout_width="30dp"
-                       android:layout_height="50dp"
-                       android:src="@drawable/flight"
-                       android:background="@android:color/white"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_trips"
+                       android:layout_marginTop="20dp"
                        android:layout_gravity="center"/>
 
                    <TextView
@@ -178,6 +179,7 @@
                        android:layout_height="wrap_content"
                        android:layout_gravity="center"
                        android:text="My Trips"
+                       android:layout_marginTop="10dp"
                        android:textColor="#1a0101"
                        android:fontFamily="sans-serif-condensed"/>
 
@@ -205,16 +207,17 @@
 
 
                    <ImageView
-                       android:layout_width="30dp"
-                       android:layout_height="50dp"
-                       android:src="@drawable/flight"
-                       android:background="@android:color/white"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_qrcode"
+                       android:layout_marginTop="20dp"
                        android:layout_gravity="center"/>
 
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center"
+                       android:layout_marginTop="10dp"
                        android:fontFamily="sans-serif-condensed"
                        android:text="Fast Checkin"
                        android:textColor="#1a0101" />
@@ -240,16 +243,18 @@
 
 
                    <ImageView
-                       android:layout_width="30dp"
-                       android:layout_height="50dp"
-                       android:src="@drawable/flight"
-                       android:background="@android:color/white"
+                       android:id="@+id/status"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/ic_status"
+                       android:layout_marginTop="20dp"
                        android:layout_gravity="center"/>
 
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center"
+                       android:layout_marginTop="10dp"
                        android:text="Flight Status"
                        android:textColor="#1a0101"
                        android:fontFamily="sans-serif-condensed"/>
@@ -275,10 +280,10 @@
 
 
                    <ImageView
-                       android:layout_width="30dp"
-                       android:layout_height="50dp"
-                       android:src="@drawable/flight"
-                       android:background="@android:color/white"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_drink"
+                       android:layout_marginTop="20dp"
                        android:layout_gravity="center"/>
 
 
@@ -288,6 +293,7 @@
                        android:layout_gravity="center"
                        android:text="Eat and Drink "
                        android:textColor="#1a0101"
+                       android:layout_marginTop="10dp"
                        android:fontFamily="sans-serif-condensed"/>
 
 
