@@ -22,9 +22,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +92,7 @@ documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSna
 
     }
 });
+
 
         t1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -381,6 +386,7 @@ b1.setOnClickListener(new View.OnClickListener() {
         else {
             progressDialog.dismiss();
             Intent intent=new Intent(seatlayout.this,paymentoption.class);
+            intent.putExtra("seats",seats.toString());
             startActivity(intent);
         }
     }

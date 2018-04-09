@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -42,7 +43,7 @@ public class qrcode extends AppCompatActivity {
     Button b1;
     EditText e1;
     ImageView i1, i2;
-    String s,conc,nam,city1,city2,cost1,date,fliname1;
+    String s,conc,nam,city1,city2,cost1,date,fliname1,seats;
     Bitmap bitmap;
     Bundle bundle;
     DocumentReference documentReference, documentReference1, documentReference2;
@@ -84,11 +85,13 @@ public class qrcode extends AppCompatActivity {
                     date = bundle.getString("dptdate");
                     cost1=bundle.getString("cost");
                     fliname1=bundle.getString("fliname");
+                    seats=bundle.getString("seats");
 
+                    String append=s+"\n"+nam+"\n"+seats;
 
-                    Log.d("tag", s);
+                    Log.d("tag", append);
                     try{
-                        bitmap=encode(s);
+                        bitmap=encode(append);
 
                         String x=Base64.encodeToString(getBytesFromBitmap(bitmap),Base64.NO_WRAP);
                         byte[] bytes=getBytesFromBitmap(bitmap);
@@ -188,11 +191,8 @@ public class qrcode extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
 
-                                progressDialog.dismiss();
-                                Intent intent1 = new Intent(qrcode.this,MainActivity.class);
-                                startActivity(intent1);
-                                Toast.makeText(qrcode.this, "payment success", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(qrcode.this, "check my trips to review your booking", Toast.LENGTH_SHORT).show();
+
+
 
 
                                 Notification.Builder builder=new Notification.Builder(qrcode.this);
@@ -206,6 +206,48 @@ public class qrcode extends AppCompatActivity {
                                 builder.build();
                                Notification notification=builder.getNotification();
                               notificationManager.notify(11,notification);
+
+
+
+                                firebaseFirestore.collection("tempbooked").document(um).collection("travellers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                                        if (task.isSuccessful()){
+
+
+                                            for (DocumentSnapshot documentSnapshot : task.getResult()){
+                                               DocumentReference documentReference4=firebaseFirestore.collection("tempbooked").document(um).collection("travellers").document(documentSnapshot.getId());
+                                                documentReference4.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()){
+                                                            Log.d("tag","success");
+                                                            progressDialog.dismiss();
+
+
+                                                            Intent intent1 = new Intent(qrcode.this,MainActivity.class);
+                                                            startActivity(intent1);
+                                                            Toast.makeText(qrcode.this, "payment success", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(qrcode.this, "check my trips to review your booking", Toast.LENGTH_SHORT).show();
+
+
+
+                                                        }
+                                                        else {
+                                                            Log.d("tag","success");
+
+                                                        }
+
+
+                                                    }
+                                                });
+                                            }
+                                        }
+
+                                    }
+                                });
+
 
 
                             }

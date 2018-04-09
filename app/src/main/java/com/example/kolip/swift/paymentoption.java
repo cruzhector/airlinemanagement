@@ -57,6 +57,7 @@ public class paymentoption extends AppCompatActivity {
     String datesep[];
     String cnm,flnm,paydt,paydstct,paydptct;
     String count;
+    Bundle bundle;
     ArrayList<String> al=new ArrayList<>();
     String conc="20",yr;
 LinearLayout layout;
@@ -85,6 +86,7 @@ LinearLayout layout;
     firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
     firebaseFirestore=FirebaseFirestore.getInstance();
     um=firebaseUser.getUid();
+    bundle=getIntent().getExtras();
     documentReference=firebaseFirestore.collection("users").document(um);
     documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
     @Override
@@ -226,6 +228,7 @@ else {
           intent.putExtra("dptdate",paydt);
           intent.putExtra("cost",t3.getText().toString());
           intent.putExtra("fliname",flnm);
+          intent.putExtra("seats",bundle.getString("seats"));
           startActivity(intent);
 
       }

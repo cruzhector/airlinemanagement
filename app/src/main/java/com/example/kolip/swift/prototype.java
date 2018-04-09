@@ -1,5 +1,8 @@
 package com.example.kolip.swift;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +18,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.stripe.android.model.Card;
 import com.stripe.android.view.CardInputWidget;
 
@@ -29,6 +36,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class prototype extends AppCompatActivity {
 Button b1,b2,b3,b4,b5,b6,b7,b8;
@@ -85,6 +93,20 @@ FirebaseUser firebaseUser;
 
         //        Log.d("tag", String.valueOf(sd3));
 //        Log.d("tag", String.valueOf(sd4));
+//        Intent gmailIntent = new Intent();
+//        gmailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+//        gmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"ticket" );
+//        gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "text");
+//        try {
+//            startActivity(gmailIntent);
+//        } catch(ActivityNotFoundException ex) {
+//            // handle error
+//        }
+
+
+
+
+
 
 
     }
@@ -334,8 +356,20 @@ b5.setOnClickListener(new View.OnClickListener() {
     }
 });
 
+      DocumentReference documentReference= firebaseFirestore.collection("booked").document(userid1).collection("trips").document("trip1");
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
+                if (task.isSuccessful()){
+                    seat se=task.getResult().toObject(seat.class);
+                    ArrayList<String>list= (ArrayList<String>) se.getlist();
 
+                    Log.d("tag123",list.toString());
+                }
+
+            }
+        });
 
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -408,7 +442,6 @@ b5.setOnClickListener(new View.OnClickListener() {
         private List<String> city;
 
 
-
        public citystore(List<String> city) {
            this.city = city;
        }
@@ -420,6 +453,7 @@ b5.setOnClickListener(new View.OnClickListener() {
            return city;
        }
    }
+
 
 
 }
