@@ -35,6 +35,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class qrcode extends AppCompatActivity {
@@ -50,6 +51,8 @@ public class qrcode extends AppCompatActivity {
     String count, um;
     ProgressDialog progressDialog;
     HashMap<String,Object> hashMap;
+    ArrayList<String> seatlist=new ArrayList<>();
+
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
 
@@ -86,6 +89,7 @@ public class qrcode extends AppCompatActivity {
                     cost1=bundle.getString("cost");
                     fliname1=bundle.getString("fliname");
                     seats=bundle.getString("seats");
+                    seatlist=bundle.getStringArrayList("seatlist");
 
                     String append=s+"\n"+nam+"\n"+seats;
 
@@ -104,6 +108,8 @@ public class qrcode extends AppCompatActivity {
                         hashMap.put("deptdate",date);
                         hashMap.put("totcost",cost1);
                         hashMap.put("fliname",fliname1);
+                        hashMap.put("seats",seatlist);
+                        hashMap.put("seatlist",seatlist.toString());
 
 
 

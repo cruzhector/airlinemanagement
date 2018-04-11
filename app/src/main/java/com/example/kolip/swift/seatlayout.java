@@ -94,6 +94,7 @@ documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSna
 });
 
 
+
         t1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -387,6 +388,7 @@ b1.setOnClickListener(new View.OnClickListener() {
             progressDialog.dismiss();
             Intent intent=new Intent(seatlayout.this,paymentoption.class);
             intent.putExtra("seats",seats.toString());
+            intent.putStringArrayListExtra("seatlist", (ArrayList<String>) seats);
             startActivity(intent);
         }
     }

@@ -229,6 +229,7 @@ else {
           intent.putExtra("cost",t3.getText().toString());
           intent.putExtra("fliname",flnm);
           intent.putExtra("seats",bundle.getString("seats"));
+          intent.putStringArrayListExtra("seatlist",bundle.getStringArrayList("seatlist"));
           startActivity(intent);
 
       }
